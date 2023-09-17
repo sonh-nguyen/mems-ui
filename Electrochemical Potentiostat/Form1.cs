@@ -190,18 +190,15 @@ namespace Electrochemical_Potentiostat
                 {
                     serialPort1.Close();
 
-                    CVselectPort.ResetText();
-                    CVstatusCOM.Value = 0;
-                    CVbtnConnect.Enabled = true;
-                    CVbtnDisconnect.Enabled = false;
+                    selectPort.ResetText();
+                    statusCOM.Value = 0;
+                    btnConnect.Enabled = true;
+                    btnDisconnect.Enabled = false;
+
                     CVbtnMeasure.Enabled = true;
                     CVbtnImport.Enabled = true;
                     CVbtnExport.Enabled = true;
 
-                    EISselectPort.ResetText();
-                    EISstatusCOM.Value = 0;
-                    EISbtnConnect.Enabled = true;
-                    EISbtnDisconnect.Enabled = false;
                     EISprogressBar.Enabled = true;
                     EISbtnImport.Enabled = true;
                     EISbtnExport.Enabled = true;
@@ -209,12 +206,6 @@ namespace Electrochemical_Potentiostat
                 else
                 {
                     intlen = ports.Length;
-
-                    CVselectPort.Items.Clear();
-                    CVselectPort.Items.AddRange(ports);
-
-                    EISselectPort.Items.Clear();
-                    EISselectPort.Items.AddRange(ports);
 
                      //sonnh
                     selectPort.Items.Clear();
@@ -300,119 +291,12 @@ namespace Electrochemical_Potentiostat
             }
         }
 
-        private void CVbtnConnect_Click(object sender, EventArgs e)
-        {
-            if (CVselectPort.Text == "")
-            {
-                MessageBox.Show("Please select the port COM!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                serialPort1.PortName = CVselectPort.Text;
-                EISselectPort.Text = CVselectPort.Text;
-                try
-                {
-                    serialPort1.Open();
 
-                    CVbtnConnect.Enabled = false;
-                    CVbtnDisconnect.Enabled = true;
-                    CVstatusCOM.Value = 100;
 
-                    EISbtnConnect.Enabled = false;
-                    EISbtnDisconnect.Enabled = true;
-                    EISstatusCOM.Value = 100;
-                }
-                catch
-                {
-                    MessageBox.Show("Connect to the port " + serialPort1.PortName + " is denied!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
 
-        private void CVbtnDisconnect_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                serialPort1.Close();
 
-                CVstatusCOM.Value = 0;
-                CVbtnConnect.Enabled = true;
-                CVbtnDisconnect.Enabled = false;
-                CVbtnMeasure.Enabled = true;
-                CVbtnClearAll.Enabled = true;
-                CVbtnImport.Enabled = true;
-                CVbtnExport.Enabled = true;
 
-                EISstatusCOM.Value = 0;
-                EISbtnConnect.Enabled = true;
-                EISbtnDisconnect.Enabled = false;
-                EISprogressBar.Enabled = true;
-                EISbtnClearAll.Enabled = true;
-                EISbtnImport.Enabled = true;
-                EISbtnExport.Enabled = true;
-            }
-            catch
-            {
-                MessageBox.Show("Disconnect to the port " + serialPort1.PortName + " is denied.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
-        private void EISbtnConnect_Click(object sender, EventArgs e)
-        {
-            if (EISselectPort.Text == "")
-            {
-                MessageBox.Show("Please select the port COM!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                serialPort1.PortName = EISselectPort.Text;
-                CVselectPort.Text = CVselectPort.Text;
-                try
-                {
-                    serialPort1.Open();
-
-                    CVbtnConnect.Enabled = false;
-                    CVbtnDisconnect.Enabled = true;
-                    CVstatusCOM.Value = 100;
-
-                    EISbtnConnect.Enabled = false;
-                    EISbtnDisconnect.Enabled = true;
-                    EISstatusCOM.Value = 100;
-                }
-                catch
-                {
-                    MessageBox.Show("Connect to the port " + serialPort1.PortName + " is denied!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void EISbtnDisconnect_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                serialPort1.Close();
-
-                CVstatusCOM.Value = 0;
-                CVbtnConnect.Enabled = true;
-                CVbtnDisconnect.Enabled = false;
-                CVbtnMeasure.Enabled = true;
-                CVbtnClearAll.Enabled = true;
-                CVbtnImport.Enabled = true;
-                CVbtnExport.Enabled = true;
-
-                EISstatusCOM.Value = 0;
-                EISbtnConnect.Enabled = true;
-                EISbtnDisconnect.Enabled = false;
-                EISprogressBar.Enabled = true;
-                EISbtnClearAll.Enabled = true;
-                EISbtnImport.Enabled = true;
-                EISbtnExport.Enabled = true;
-            }
-            catch
-            {
-                MessageBox.Show("Disconnect to the port " + serialPort1.PortName + " is denied.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         
         private void CVbtnMeasure_Click(object sender, EventArgs e)
         {
@@ -806,8 +690,7 @@ namespace Electrochemical_Potentiostat
             else
             {
                 serialPort1.PortName = selectPort.Text;
-                EISselectPort.Text = selectPort.Text;
-                CVselectPort.Text = selectPort.Text;
+                selectPort.Text = selectPort.Text;
                 try
                 {
                     serialPort1.Open();
@@ -833,17 +716,15 @@ namespace Electrochemical_Potentiostat
             {
                 serialPort1.Close();
 
-                CVstatusCOM.Value = 0;
-                CVbtnConnect.Enabled = true;
-                CVbtnDisconnect.Enabled = false;
+                statusCOM.Value = 0;
+                btnConnect.Enabled = true;
+                btnDisconnect.Enabled = false;
+
                 CVbtnMeasure.Enabled = true;
                 CVbtnClearAll.Enabled = true;
                 CVbtnImport.Enabled = true;
                 CVbtnExport.Enabled = true;
 
-                EISstatusCOM.Value = 0;
-                EISbtnConnect.Enabled = true;
-                EISbtnDisconnect.Enabled = false;
                 EISprogressBar.Enabled = true;
                 EISbtnClearAll.Enabled = true;
                 EISbtnImport.Enabled = true;
@@ -954,7 +835,7 @@ namespace Electrochemical_Potentiostat
             if (selectedIndex == 0)
             {
                 this.groupBoxEISParam.Visible = false;
-                this.groupBoxEISSweep.Visible = false;
+                this.groupBoxShowSweepTimes.Visible = false;
                 this.groupBoxEISMeasure.Visible = false;
                 this.EISzedGraphControl.Visible = false;
                 this.groupBoxEISResult.Visible = false;
@@ -975,7 +856,7 @@ namespace Electrochemical_Potentiostat
                 this.groupBoxCVResult.Visible = false;
 
                 this.groupBoxEISParam.Visible = true;
-                this.groupBoxEISSweep.Visible = true;
+                this.groupBoxShowSweepTimes.Visible = true;
                 this.groupBoxEISMeasure.Visible = true;
                 this.EISzedGraphControl.Visible = true;
                 this.groupBoxEISResult.Visible = true;
