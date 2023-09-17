@@ -87,6 +87,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="License-LGPL.txt" />
+    <Content Include="Resources\chip_design.png" />
+    <None Include="Resources\chip_design1.png" />
     <None Include="Resources\chip_draw1.jpg" />
     <None Include="Resources\chip_draw.jpg" />
     <None Include="Resources\Logo ĐH Công Nghệ-UET.png" />

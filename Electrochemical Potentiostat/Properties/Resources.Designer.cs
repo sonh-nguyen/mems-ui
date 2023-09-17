@@ -63,6 +63,16 @@ namespace Electrochemical_Potentiostat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap chip_design {
+            get {
+                object obj = ResourceManager.GetObject("chip_design", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap chip_draw {
             get {
                 object obj = ResourceManager.GetObject("chip_draw", resourceCulture);

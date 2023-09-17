@@ -43,34 +43,43 @@ namespace Electrochemical_Potentiostat
 
         private void sendControlVoltageCmd(int Cmd)
         {
-            if (!serialPort1.IsOpen)
-            {
-                MessageBox.Show("Please connect to the port!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                int VoltageIdx = -1;
-                if (cbVoltage1.Checked)
-                    VoltageIdx = 1;
-                else if (cbVoltage2.Checked)
-                    VoltageIdx = 2;
+            //if (!serialPort1.IsOpen)
+            //{
+            //    MessageBox.Show("Please connect to the port!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //else
+            //{
+            //    int VoltageIdx = -1;
+            //    if (cbVoltage1.Checked)
+            //        VoltageIdx = 1;
+            //    else if (cbVoltage2.Checked)
+            //        VoltageIdx = 2;
 
 
-                //string str = "1#" + CVnumericStartVolt.Text + '?' + CVnumericEndVolt.Text + '/' + numStep.ToString() + '|' + CVnumericRepeatTimes.Text + "$0!";
-                string str = "3#" + VoltageIdx.ToString() + '?' + Cmd.ToString() + "/" + "!";
-                serialPort1.Write(str);
-            }
+            //    //string str = "1#" + CVnumericStartVolt.Text + '?' + CVnumericEndVolt.Text + '/' + numStep.ToString() + '|' + CVnumericRepeatTimes.Text + "$0!";
+            //    string str = "3#" + VoltageIdx.ToString() + '?' + Cmd.ToString() + "/" + "!";
+            //    serialPort1.Write(str);
+            //}
         }
 
         public Form1()
         {
             InitializeComponent();
+            //sonnh hide tab
+            tabControl1.TabPages.Remove(tabCV);
+            tabControl1.TabPages.Remove(tabEIS);
+
+            comboBoxVoltage1.SelectedIndex = 7;
+            comboBoxVoltage2.SelectedIndex = 0;
+            comboBoxMethod.SelectedIndex = 0;
+            //end sonnh
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             provider.NumberDecimalSeparator = ".";
             CV_ClearGraph();
             EIS_ClearGraph();
+
         }
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -84,36 +93,36 @@ namespace Electrochemical_Potentiostat
             //sonnh end
             if (true)
             {
-                Console.WriteLine("Got Data");
+                //Console.WriteLine("Got Data");
 
-                string[] arrList = serialPort1.ReadExisting().Split(';');
+                //string[] arrList = serialPort1.ReadExisting().Split(';');
 
-                Console.WriteLine(arrList[0] + " " + arrList[1]);
-                if (arrList.Length > 1)
-                {
-                    if (tbVoltage1.InvokeRequired)
-                    {
-                        tbVoltage1.Invoke(new MethodInvoker(delegate () {
-                            tbVoltage1.Text = arrList[0];
-                        }));
-                    }
-                    else
-                    {
-                        tbVoltage1.Text = arrList[0];
-                    }
+                //Console.WriteLine(arrList[0] + " " + arrList[1]);
+                //if (arrList.Length > 1)
+                //{
+                //    if (tbVoltage1.InvokeRequired)
+                //    {
+                //        tbVoltage1.Invoke(new MethodInvoker(delegate () {
+                //            tbVoltage1.Text = arrList[0];
+                //        }));
+                //    }
+                //    else
+                //    {
+                //        tbVoltage1.Text = arrList[0];
+                //    }
 
-                    if (tbVoltage2.InvokeRequired)
-                    {
-                        tbVoltage2.Invoke(new MethodInvoker(delegate () {
-                            tbVoltage2.Text = arrList[1];
-                        }));
-                    }
-                    else
-                    {
-                        tbVoltage2.Text = arrList[1];
-                    }
+                //    if (tbVoltage2.InvokeRequired)
+                //    {
+                //        tbVoltage2.Invoke(new MethodInvoker(delegate () {
+                //            tbVoltage2.Text = arrList[1];
+                //        }));
+                //    }
+                //    else
+                //    {
+                //        tbVoltage2.Text = arrList[1];
+                //    }
 
-                }
+                //}
 
             }
             //else if (CVbtnMeasure.Enabled == false)
@@ -193,7 +202,7 @@ namespace Electrochemical_Potentiostat
                     EISstatusCOM.Value = 0;
                     EISbtnConnect.Enabled = true;
                     EISbtnDisconnect.Enabled = false;
-                    EISbtnMeasure.Enabled = true;
+                    EISprogressBar.Enabled = true;
                     EISbtnImport.Enabled = true;
                     EISbtnExport.Enabled = true;
                 }
@@ -337,7 +346,7 @@ namespace Electrochemical_Potentiostat
                 EISstatusCOM.Value = 0;
                 EISbtnConnect.Enabled = true;
                 EISbtnDisconnect.Enabled = false;
-                EISbtnMeasure.Enabled = true;
+                EISprogressBar.Enabled = true;
                 EISbtnClearAll.Enabled = true;
                 EISbtnImport.Enabled = true;
                 EISbtnExport.Enabled = true;
@@ -394,7 +403,7 @@ namespace Electrochemical_Potentiostat
                 EISstatusCOM.Value = 0;
                 EISbtnConnect.Enabled = true;
                 EISbtnDisconnect.Enabled = false;
-                EISbtnMeasure.Enabled = true;
+                EISprogressBar.Enabled = true;
                 EISbtnClearAll.Enabled = true;
                 EISbtnImport.Enabled = true;
                 EISbtnExport.Enabled = true;
@@ -458,7 +467,7 @@ namespace Electrochemical_Potentiostat
             {
                 MessageBox.Show("Please complete all fields!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (EISbtnMeasure.Text == "Measure")
+            else if (EISprogressBar.Text == "Measure")
             {
                 buffSerial = new string[25000];
 
@@ -473,11 +482,11 @@ namespace Electrochemical_Potentiostat
 
                 if (EIScheckBoxSweepEn.Checked == true)
                 {
-                    EISbtnMeasure.Enabled = false;
+                    EISprogressBar.Enabled = false;
                 }
                 else
                 {
-                    EISbtnMeasure.Text = "Stop";
+                    EISprogressBar.Text = "Stop";
                 }
 
                 EISbtnClearAll.Enabled = false;
@@ -512,7 +521,7 @@ namespace Electrochemical_Potentiostat
             }
             else
             {
-                EISbtnMeasure.Text = "Measure";
+                EISprogressBar.Text = "Measure";
                 if (EIScheckBoxSweepEn.Checked == true)
                 {
                     EISbtnClearAll.Enabled = true;
@@ -835,7 +844,7 @@ namespace Electrochemical_Potentiostat
                 EISstatusCOM.Value = 0;
                 EISbtnConnect.Enabled = true;
                 EISbtnDisconnect.Enabled = false;
-                EISbtnMeasure.Enabled = true;
+                EISprogressBar.Enabled = true;
                 EISbtnClearAll.Enabled = true;
                 EISbtnImport.Enabled = true;
                 EISbtnExport.Enabled = true;
@@ -881,15 +890,7 @@ namespace Electrochemical_Potentiostat
 
         }
 
-        private void cbVoltage1_CheckedChanged(object sender, EventArgs e)
-        {
-            cbVoltage2.Checked = !cbVoltage1.Checked;
-        }
 
-        private void cbVoltage2_CheckedChanged(object sender, EventArgs e)
-        {
-            cbVoltage1.Checked = !cbVoltage2.Checked;
-        }
 
         private void bntExtraSub_Click(object sender, EventArgs e)
         {
@@ -909,6 +910,127 @@ namespace Electrochemical_Potentiostat
         private void btnExtraAdd_Click(object sender, EventArgs e)
         {
             sendControlVoltageCmd(ExtraAdd);
+        }
+
+        private void groupBox7_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxVoltage1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxVoltage2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = this.comboBoxMethod.SelectedIndex;
+            Console.WriteLine("sonnh" + selectedIndex);
+            if (selectedIndex == 0)
+            {
+                this.groupBoxEISParam.Visible = false;
+                this.groupBoxEISSweep.Visible = false;
+                this.groupBoxEISMeasure.Visible = false;
+                this.EISzedGraphControl.Visible = false;
+                this.groupBoxEISResult.Visible = false;
+
+                this.groupBoxCVParam.Visible = true;
+                this.groupBoxCVSweep.Visible = true;
+                this.groupBoxCVMeasure.Visible = true;
+                this.CVzedGraphControl.Visible = true;
+                this.groupBoxCVResult.Visible = true;
+
+            }
+            else if (selectedIndex == 1)
+            {
+                this.groupBoxCVParam.Visible = false;
+                this.groupBoxCVSweep.Visible = false;
+                this.groupBoxCVMeasure.Visible = false;
+                this.CVzedGraphControl.Visible = false;
+                this.groupBoxCVResult.Visible = false;
+
+                this.groupBoxEISParam.Visible = true;
+                this.groupBoxEISSweep.Visible = true;
+                this.groupBoxEISMeasure.Visible = true;
+                this.EISzedGraphControl.Visible = true;
+                this.groupBoxEISResult.Visible = true;
+
+            }
+
+        }
+
+        private void groupBoxEISParam_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CVzedGraphControl_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EISnumericSweepPoints_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnApplyVoltage_Click(object sender, EventArgs e)
+        {
+            if (!serialPort1.IsOpen)
+            {
+                MessageBox.Show("Please connect to the port!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                string Voltage1 = comboBoxVoltage1.Text;
+                string Voltage2 = comboBoxVoltage1.Text;
+
+                //string str = "1#" + CVnumericStartVolt.Text + '?' + CVnumericEndVolt.Text + '/' + numStep.ToString() + '|' + CVnumericRepeatTimes.Text + "$0!";
+                string str = "3#" + Voltage1.ToString() + '?' + Voltage2.ToString() + "/" + "!";
+                serialPort1.Write(str);
+            }
+        }
+
+        private void btnResetVoltage_Click(object sender, EventArgs e)
+        {
+            if (!serialPort1.IsOpen)
+            {
+                MessageBox.Show("Please connect to the port!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                string Voltage1 = "0";
+                string Voltage2 = "0";
+
+                //string str = "1#" + CVnumericStartVolt.Text + '?' + CVnumericEndVolt.Text + '/' + numStep.ToString() + '|' + CVnumericRepeatTimes.Text + "$0!";
+                string str = "3#" + Voltage1.ToString() + '?' + Voltage2.ToString() + "/" + "!";
+                serialPort1.Write(str);
+            }
         }
 
         private void EISbtnClearAll_Click(object sender, EventArgs e)

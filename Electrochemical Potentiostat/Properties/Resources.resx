@@ -121,13 +121,16 @@
   <data name="Logo ĐH Quốc Gia Hà Nội-VNU" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logo ĐH Quốc Gia Hà Nội-VNU.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="chip_draw1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chip_draw1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="chip_draw" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\chip_draw.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Logo ĐH Công Nghệ-UET" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logo ĐH Công Nghệ-UET.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="chip_draw1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\chip_draw1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="chip_design" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chip_design1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
