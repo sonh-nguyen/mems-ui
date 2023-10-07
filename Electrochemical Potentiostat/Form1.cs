@@ -40,7 +40,10 @@ namespace Electrochemical_Potentiostat
         const int Sub = 2;
         const int Add = 3;
         const int ExtraAdd = 4;
-
+        const int MAX_TIMEOUT_CTRL_VOLTAGE = 15000; /*ms*/
+        int timeoutCtrlVoltage = 0;
+        int isMeasuring = 0;
+        int isControllingVoltage = 0;
         private void sendControlVoltageCmd(int Cmd)
         {
             //if (!serialPort1.IsOpen)
@@ -84,7 +87,45 @@ namespace Electrochemical_Potentiostat
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            if (CVbtnMeasure.Enabled == false)
+            if (btnApplyVoltage.Enabled == false)
+            {
+                string[] arrList = serialPort1.ReadLine().Split(';');
+                /*0 is code_command of control voltage status*/
+
+                if (arrList.Length > 5 && arrList[0] == "0")    
+                {
+                    timeoutCtrlVoltage = 0;
+                    int currentTry = Convert.ToInt32(arrList[1]);
+                    int maxTry = Convert.ToInt32(arrList[2]);
+                    int isSuccess = Convert.ToInt32(arrList[3]);
+                    //double voltage1 = Convert.ToDouble(arrList[4], provider);
+                    //double voltage2 = Convert.ToDouble(arrList[5], provider);
+
+                    labelVoltage1.Text = arrList[4];
+                    labelVoltage2.Text = arrList[5];
+                    if (isSuccess == 1) 
+                    {
+                        isControllingVoltage = 0;
+                        statusCtrlVoltage.Value = 100;
+                        btnApplyVoltage.Enabled = true;
+                    }
+                    else if (currentTry < maxTry)
+                    {
+                        isControllingVoltage = 1;
+                        statusCtrlVoltage.Value = currentTry * 100 / maxTry;
+                        btnApplyVoltage.Enabled = false;
+                    }
+                    else
+                    {
+                        isControllingVoltage = 0;
+                        MessageBox.Show("Setup voltage FAIL!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        statusCtrlVoltage.Value = 0;
+                        btnApplyVoltage.Enabled = true;
+                    }
+
+                }
+            }
+            else if (CVbtnMeasure.Enabled == false)
             {
                 /*string[] arrList = serialPort1.ReadExisting().Split('\n');
                 int i = 0;
@@ -142,6 +183,7 @@ namespace Electrochemical_Potentiostat
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //Console.WriteLine("timer is running ");
             string[] ports = SerialPort.GetPortNames(); // Get list COM ports
             if (intlen != ports.Length)
             {
@@ -172,12 +214,33 @@ namespace Electrochemical_Potentiostat
                     //sonnh end
                 }
             }
+            if (btnApplyVoltage.Enabled == false)   /*Controlling voltage*/
+            {
+                if (statusCtrlVoltage.Value > 0 && statusCtrlVoltage.Value < 100)
+                {
+                    timeoutCtrlVoltage += 100;
+                    //Console.WriteLine("sonnh " + timeoutCtrlVoltage);
+                    if (timeoutCtrlVoltage >= MAX_TIMEOUT_CTRL_VOLTAGE)
+                    {
+                        timeoutCtrlVoltage = 0;
+                        timer1.Stop();
+                        MessageBox.Show("Device is not responding", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        timer1.Start();
+                        isControllingVoltage = 0;
+                        btnApplyVoltage.Enabled = true;
+                        statusCtrlVoltage.Value = 0;
 
-            if (CVbtnMeasure.Enabled == false)
+                    }
+
+                }
+
+            }
+            else if (CVbtnMeasure.Enabled == false)
             {
                 CVprogressBar.Value = receiverCount * 100 / numSample;
                 if (CVprogressBar.Value == 100)
                 {
+                    isMeasuring = 0;
                     CV_DataProcess();
                     CV_DataListview();
                     CV_DrawGraph();
@@ -208,6 +271,7 @@ namespace Electrochemical_Potentiostat
                     EISnumericStopFreq.Enabled = true;
                     EISnumericSweepPoints.Enabled = true;
                     EISnumericRepeatTimes.Enabled = true;
+                    isMeasuring = 0;
                 }
             }
             else if (EISbtnMeasure.Text == "Stop")
@@ -217,6 +281,7 @@ namespace Electrochemical_Potentiostat
                     EIS_DataListview();
                     EIS_DrawGraphRealtime();
                     status = 0;
+                    isMeasuring = 0;
                 }
             }
         }
@@ -274,7 +339,11 @@ namespace Electrochemical_Potentiostat
                 bufferC = new double[25000];
                 bufferV = new double[25000];
                 tempC = new double[25000];
-
+                if (isControllingVoltage == 1)
+                {
+                    MessageBox.Show("Please wait until the voltage setting is completed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 S_Vol = Convert.ToInt32(CVnumericStartVolt.Text);
                 E_Vol = Convert.ToInt32(CVnumericEndVolt.Text);
                 Step = Convert.ToInt32(CVnumericStep.Text);
@@ -296,6 +365,7 @@ namespace Electrochemical_Potentiostat
 
                 //string str = "1#" + CVnumericStartVolt.Text + '?' + CVnumericEndVolt.Text + '/' + numStep.ToString() + '|' + CVnumericRepeatTimes.Text + "$0!";
                 string str = "1#" + (-E_Vol).ToString() + '?' + (-S_Vol).ToString() + '/' + numStep.ToString() + '|' + CVnumericRepeatTimes.Text + "$0!";
+                isMeasuring = 1;
                 serialPort1.Write(str);
             }
         }
@@ -318,6 +388,12 @@ namespace Electrochemical_Potentiostat
                 buffMag = new double[25000];
                 buffPhase = new double[25000];
 
+
+                if (isControllingVoltage == 1)
+                {
+                    MessageBox.Show("Please wait until the voltage setting is completed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 receiverCount = 0;
                 status = 0;
                 EIS_ClearGraph();
@@ -360,6 +436,7 @@ namespace Electrochemical_Potentiostat
                     numSample = Convert.ToInt32(EISnumericSweepPoints.Text) * Convert.ToInt32(EISnumericRepeatTimes.Text);
                     str = "2#" + EISnumericStartFreq.Text + '?' + EISnumericStopFreq.Text + '/' + EISnumericSweepPoints.Text + '|' + EISnumericRepeatTimes.Text + '$' + logEn + '!';
                 }
+                isMeasuring = 1;
                 serialPort1.Write(str);
             }
             else
@@ -693,6 +770,7 @@ namespace Electrochemical_Potentiostat
                 statusCOM.Value = 0;
                 btnConnect.Enabled = true;
                 btnDisconnect.Enabled = false;
+                isMeasuring = 0;
                 //btnClearAll.Enabled = true;
                 //btnImport.Enabled = true;
 
@@ -790,7 +868,7 @@ namespace Electrochemical_Potentiostat
         private void comboBoxMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedIndex = this.comboBoxMethod.SelectedIndex;
-            Console.WriteLine("sonnh" + selectedIndex);
+            //Console.WriteLine("sonnh" + selectedIndex);
             if (selectedIndex == 0)
             {
                 this.groupBoxEISParam.Visible = false;
@@ -851,6 +929,12 @@ namespace Electrochemical_Potentiostat
                 string Voltage2 = comboBoxVoltage1.Text;
                 float v1 = float.Parse(Voltage1, CultureInfo.InvariantCulture.NumberFormat);
                 float v2 = float.Parse(Voltage2, CultureInfo.InvariantCulture.NumberFormat);
+
+                if (isMeasuring == 1)
+                {
+                    MessageBox.Show("Please wait until the measuring process is completed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (v1 > 90 || v1 < 15)
                 {
                     MessageBox.Show("Voltage 1 value is invalid!\nIt must be between 15V and 90 V", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -863,7 +947,10 @@ namespace Electrochemical_Potentiostat
                 }
                 //string str = "1#" + CVnumericStartVolt.Text + '?' + CVnumericEndVolt.Text + '/' + numStep.ToString() + '|' + CVnumericRepeatTimes.Text + "$0!";
                 string str = "3#" + Voltage1.ToString() + '?' + Voltage2.ToString() + "/" + "!";
+                isControllingVoltage = 1;
                 serialPort1.Write(str);
+                btnApplyVoltage.Enabled = false;
+                statusCtrlVoltage.Value = 20;
             }
         }
 
@@ -882,6 +969,11 @@ namespace Electrochemical_Potentiostat
                 string str = "3#" + Voltage1.ToString() + '?' + Voltage2.ToString() + "/" + "!";
                 serialPort1.Write(str);
             }
+        }
+
+        private void statusCtrlVoltage_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void EISbtnClearAll_Click(object sender, EventArgs e)

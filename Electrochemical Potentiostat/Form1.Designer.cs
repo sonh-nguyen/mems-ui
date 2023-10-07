@@ -33,6 +33,7 @@
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabCVEIS = new System.Windows.Forms.TabPage();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.groupBoxEISResult = new System.Windows.Forms.GroupBox();
             this.EISlistView = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -44,7 +45,6 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.btnResetVoltage = new System.Windows.Forms.Button();
             this.btnApplyVoltage = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -116,12 +116,16 @@
             this.tabCV = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.statusCtrlVoltage = new System.Windows.Forms.ProgressBar();
+            this.labelVoltage1 = new System.Windows.Forms.Label();
+            this.labelVoltage2 = new System.Windows.Forms.Label();
             this.tabCVEIS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.groupBoxEISResult.SuspendLayout();
             this.groupBoxCVResult.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox13.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.groupBoxDetection.SuspendLayout();
             this.groupBoxEISMeasure.SuspendLayout();
@@ -141,7 +145,6 @@
             this.tabEIS.SuspendLayout();
             this.tabCV.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -153,7 +156,6 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // tabCVEIS
@@ -179,6 +181,17 @@
             this.tabCVEIS.TabIndex = 2;
             this.tabCVEIS.Text = "Menu";
             this.tabCVEIS.Click += new System.EventHandler(this.tabCVEIS_Click);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::Electrochemical_Potentiostat.Properties.Resources.Logo_ĐH_Quốc_Gia_Hà_Nội_VNU;
+            this.pictureBox6.Location = new System.Drawing.Point(347, 6);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(43, 44);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 33;
+            this.pictureBox6.TabStop = false;
             // 
             // groupBoxEISResult
             // 
@@ -273,7 +286,7 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.btnResetVoltage);
+            this.groupBox7.Controls.Add(this.statusCtrlVoltage);
             this.groupBox7.Controls.Add(this.btnApplyVoltage);
             this.groupBox7.Controls.Add(this.label18);
             this.groupBox7.Controls.Add(this.label17);
@@ -288,16 +301,6 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Preconcentration";
             this.groupBox7.Enter += new System.EventHandler(this.groupBox7_Enter);
-            // 
-            // btnResetVoltage
-            // 
-            this.btnResetVoltage.Location = new System.Drawing.Point(122, 75);
-            this.btnResetVoltage.Name = "btnResetVoltage";
-            this.btnResetVoltage.Size = new System.Drawing.Size(75, 23);
-            this.btnResetVoltage.TabIndex = 7;
-            this.btnResetVoltage.Text = "Reset";
-            this.btnResetVoltage.UseVisualStyleBackColor = true;
-            this.btnResetVoltage.Click += new System.EventHandler(this.btnResetVoltage_Click);
             // 
             // btnApplyVoltage
             // 
@@ -442,6 +445,8 @@
             // 
             this.groupBox12.BackgroundImage = global::Electrochemical_Potentiostat.Properties.Resources.chip_design;
             this.groupBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox12.Controls.Add(this.labelVoltage2);
+            this.groupBox12.Controls.Add(this.labelVoltage1);
             this.groupBox12.Location = new System.Drawing.Point(306, 96);
             this.groupBox12.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox12.Name = "groupBox12";
@@ -1211,16 +1216,37 @@
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
             // 
-            // pictureBox6
+            // statusCtrlVoltage
             // 
-            this.pictureBox6.Image = global::Electrochemical_Potentiostat.Properties.Resources.Logo_ĐH_Quốc_Gia_Hà_Nội_VNU;
-            this.pictureBox6.Location = new System.Drawing.Point(347, 6);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(43, 44);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 33;
-            this.pictureBox6.TabStop = false;
+            this.statusCtrlVoltage.Location = new System.Drawing.Point(123, 75);
+            this.statusCtrlVoltage.Name = "statusCtrlVoltage";
+            this.statusCtrlVoltage.Size = new System.Drawing.Size(73, 20);
+            this.statusCtrlVoltage.TabIndex = 5;
+            this.statusCtrlVoltage.Click += new System.EventHandler(this.statusCtrlVoltage_Click);
+            // 
+            // labelVoltage1
+            // 
+            this.labelVoltage1.AutoSize = true;
+            this.labelVoltage1.BackColor = System.Drawing.Color.Transparent;
+            this.labelVoltage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVoltage1.ForeColor = System.Drawing.Color.Firebrick;
+            this.labelVoltage1.Location = new System.Drawing.Point(14, 73);
+            this.labelVoltage1.Name = "labelVoltage1";
+            this.labelVoltage1.Size = new System.Drawing.Size(33, 16);
+            this.labelVoltage1.TabIndex = 34;
+            this.labelVoltage1.Text = "N/A";
+            // 
+            // labelVoltage2
+            // 
+            this.labelVoltage2.AutoSize = true;
+            this.labelVoltage2.BackColor = System.Drawing.Color.Transparent;
+            this.labelVoltage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVoltage2.ForeColor = System.Drawing.Color.Firebrick;
+            this.labelVoltage2.Location = new System.Drawing.Point(403, 74);
+            this.labelVoltage2.Name = "labelVoltage2";
+            this.labelVoltage2.Size = new System.Drawing.Size(33, 16);
+            this.labelVoltage2.TabIndex = 35;
+            this.labelVoltage2.Text = "N/A";
             // 
             // Form1
             // 
@@ -1235,12 +1261,15 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabCVEIS.ResumeLayout(false);
             this.tabCVEIS.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.groupBoxEISResult.ResumeLayout(false);
             this.groupBoxCVResult.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.groupBoxDetection.ResumeLayout(false);
             this.groupBoxDetection.PerformLayout();
@@ -1267,7 +1296,6 @@
             this.tabCV.ResumeLayout(false);
             this.tabCV.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1298,7 +1326,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox comboBoxVoltage2;
         private System.Windows.Forms.GroupBox groupBoxDetection;
-        private System.Windows.Forms.Button btnResetVoltage;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox comboBoxMethod;
         private System.Windows.Forms.GroupBox groupBoxCVSweep;
@@ -1360,6 +1387,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.ProgressBar statusCtrlVoltage;
+        private System.Windows.Forms.Label labelVoltage2;
+        private System.Windows.Forms.Label labelVoltage1;
     }
 }
 
