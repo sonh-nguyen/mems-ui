@@ -84,101 +84,60 @@ namespace Electrochemical_Potentiostat
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-
-            //sonnh display Voltage
-
-
-
-
-            //sonnh end
-            if (true)
+            if (CVbtnMeasure.Enabled == false)
             {
-                //Console.WriteLine("Got Data");
-
-                //string[] arrList = serialPort1.ReadExisting().Split(';');
-
-                //Console.WriteLine(arrList[0] + " " + arrList[1]);
-                //if (arrList.Length > 1)
-                //{
-                //    if (tbVoltage1.InvokeRequired)
-                //    {
-                //        tbVoltage1.Invoke(new MethodInvoker(delegate () {
-                //            tbVoltage1.Text = arrList[0];
-                //        }));
-                //    }
-                //    else
-                //    {
-                //        tbVoltage1.Text = arrList[0];
-                //    }
-
-                //    if (tbVoltage2.InvokeRequired)
-                //    {
-                //        tbVoltage2.Invoke(new MethodInvoker(delegate () {
-                //            tbVoltage2.Text = arrList[1];
-                //        }));
-                //    }
-                //    else
-                //    {
-                //        tbVoltage2.Text = arrList[1];
-                //    }
-
-                //}
-
+                /*string[] arrList = serialPort1.ReadExisting().Split('\n');
+                int i = 0;
+                while (i < arrList.Length)
+                {
+                    Console.WriteLine(receiverCount);
+                    if (buffSerial[receiverCount] == null)
+                    {
+                        buffSerial[receiverCount] = arrList[i];
+                    }
+                    else
+                    {
+                        buffSerial[receiverCount] += arrList[i];
+                    }
+                    if (arrList[i].Contains("\r"))
+                    {
+                        receiverCount++;
+                    }
+                    i++;
+                }*/
+                string str = serialPort1.ReadLine();
+                if (str[0] >= '0' && str[0] <= '9')
+                {
+                    buffSerial[receiverCount] = str;
+                    receiverCount++;
+                    Console.WriteLine(receiverCount);
+                }
             }
-            //else if (CVbtnMeasure.Enabled == false)
-            //{
-            //    /*string[] arrList = serialPort1.ReadExisting().Split('\n');
-            //    int i = 0;
-            //    while (i < arrList.Length)
-            //    {
-            //        Console.WriteLine(receiverCount);
-            //        if (buffSerial[receiverCount] == null)
-            //        {
-            //            buffSerial[receiverCount] = arrList[i];
-            //        }
-            //        else
-            //        {
-            //            buffSerial[receiverCount] += arrList[i];
-            //        }
-            //        if (arrList[i].Contains("\r"))
-            //        {
-            //            receiverCount++;
-            //        }
-            //        i++;
-            //    }*/
-            //    string str = serialPort1.ReadLine();
-            //    if (str[0] >= '0' && str[0] <= '9')
-            //    {
-            //        buffSerial[receiverCount] = str;
-            //        receiverCount++;
-            //        Console.WriteLine(receiverCount);
-            //    }
-            //}
-            //else if (EISbtnMeasure.Enabled == false || EISbtnMeasure.Text == "Stop")
-            //{
-            //    string[] arrList = serialPort1.ReadLine().Split(';');
-            //    if (arrList.Length > 1)
-            //    {
-            //        buffFreq[receiverCount] = Convert.ToDouble(arrList[0], provider);
-            //        if (arrList[1] == "inf")
-            //        {
-            //            buffMag[receiverCount] = 60000000;
-            //        }
-            //        else
-            //        {
-            //            buffMag[receiverCount] = Convert.ToDouble(arrList[1], provider);
-            //        }
-            //        buffPhase[receiverCount] = Convert.ToDouble(arrList[2], provider);
+            else if (EISbtnMeasure.Enabled == false || EISbtnMeasure.Text == "Stop")
+            {
+                string[] arrList = serialPort1.ReadLine().Split(';');
+                if (arrList.Length > 1)
+                {
+                    buffFreq[receiverCount] = Convert.ToDouble(arrList[0], provider);
+                    if (arrList[1] == "inf")
+                    {
+                        buffMag[receiverCount] = 60000000;
+                    }
+                    else
+                    {
+                        buffMag[receiverCount] = Convert.ToDouble(arrList[1], provider);
+                    }
+                    buffPhase[receiverCount] = Convert.ToDouble(arrList[2], provider);
 
-            //        time = buffFreq[receiverCount] / 1000;
-            //        mag = buffMag[receiverCount];
-            //        phase = buffPhase[receiverCount];
+                    time = buffFreq[receiverCount] / 1000;
+                    mag = buffMag[receiverCount];
+                    phase = buffPhase[receiverCount];
 
-            //        Console.WriteLine(receiverCount);
-            //        receiverCount++;
-            //        status = 1;
-            //    }
-            //}
+                    Console.WriteLine(receiverCount);
+                    receiverCount++;
+                    status = 1;
+                }
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -890,7 +849,18 @@ namespace Electrochemical_Potentiostat
             {
                 string Voltage1 = comboBoxVoltage1.Text;
                 string Voltage2 = comboBoxVoltage1.Text;
-
+                float v1 = float.Parse(Voltage1, CultureInfo.InvariantCulture.NumberFormat);
+                float v2 = float.Parse(Voltage2, CultureInfo.InvariantCulture.NumberFormat);
+                if (v1 > 90 || v1 < 15)
+                {
+                    MessageBox.Show("Voltage 1 value is invalid!\nIt must be between 15V and 90 V", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (v1 > 90 || v1 < 15)
+                {
+                    MessageBox.Show("Voltage 2 value is invalid!\nIt must be between 15V and 90 V", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 //string str = "1#" + CVnumericStartVolt.Text + '?' + CVnumericEndVolt.Text + '/' + numStep.ToString() + '|' + CVnumericRepeatTimes.Text + "$0!";
                 string str = "3#" + Voltage1.ToString() + '?' + Voltage2.ToString() + "/" + "!";
                 serialPort1.Write(str);

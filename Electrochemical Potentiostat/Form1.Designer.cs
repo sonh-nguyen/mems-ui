@@ -1165,7 +1165,7 @@
             this.tabEIS.Padding = new System.Windows.Forms.Padding(3);
             this.tabEIS.Size = new System.Drawing.Size(1071, 640);
             this.tabEIS.TabIndex = 1;
-            this.tabEIS.Text = "Electrochemical Impedance Spectroscopy";
+            this.tabEIS.Text = "dump2";
             // 
             // label3
             // 
@@ -1186,7 +1186,7 @@
             this.tabCV.Padding = new System.Windows.Forms.Padding(3);
             this.tabCV.Size = new System.Drawing.Size(1071, 640);
             this.tabCV.TabIndex = 0;
-            this.tabCV.Text = "Cyclic Voltammetry";
+            this.tabCV.Text = "dump1";
             // 
             // label8
             // 
@@ -1200,9 +1200,9 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabCVEIS);
             this.tabControl1.Controls.Add(this.tabCV);
             this.tabControl1.Controls.Add(this.tabEIS);
-            this.tabControl1.Controls.Add(this.tabCVEIS);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
