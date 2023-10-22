@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace Electrochemical_Potentiostat
         LineItem curve1, curve2, curve3, curve4, curve5, curve6;
 
         int intlen = 0, status = 0, receiverCount = 0;
+        int controlVoltageProgress = 0;
+        string  curVoltage1 = "N/A", curVoltage2 = "N/A";
         int S_Vol, E_Vol, Step, RepeatTimes, numStep = 0, numSample = 1;
         double time, mag, phase;
 
@@ -87,11 +90,20 @@ namespace Electrochemical_Potentiostat
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            Console.WriteLine("Seiral port got smt");
             if (btnApplyVoltage.Enabled == false)
             {
-                string[] arrList = serialPort1.ReadLine().Split(';');
+                Console.WriteLine("1");
+                string str = serialPort1.ReadLine();
+                Console.WriteLine("2");
+                Console.WriteLine(str);
+                string[] arrList = str.Split(';');
+                Console.WriteLine("Data: " + str + "\tNum of element: " + arrList.Length);
                 /*0 is code_command of control voltage status*/
-
+                for ( int i = 0; i< arrList.Length; i++)
+                {
+                    Console.WriteLine(arrList[i]);
+                }
                 if (arrList.Length > 5 && arrList[0] == "0")    
                 {
                     timeoutCtrlVoltage = 0;
@@ -101,26 +113,27 @@ namespace Electrochemical_Potentiostat
                     //double voltage1 = Convert.ToDouble(arrList[4], provider);
                     //double voltage2 = Convert.ToDouble(arrList[5], provider);
 
-                    labelVoltage1.Text = arrList[4];
-                    labelVoltage2.Text = arrList[5];
+                    Console.WriteLine(arrList[4] + " " + arrList[5]);
+                    //labelVoltage1.Text = arrList[4];
+                    //labelVoltage2.Text = arrList[5];
+                    curVoltage1 = arrList[4];
+                    curVoltage2 = arrList[5];
                     if (isSuccess == 1) 
                     {
                         isControllingVoltage = 0;
-                        statusCtrlVoltage.Value = 100;
-                        btnApplyVoltage.Enabled = true;
+                        controlVoltageProgress = 100;
+
                     }
                     else if (currentTry < maxTry)
                     {
                         isControllingVoltage = 1;
-                        statusCtrlVoltage.Value = currentTry * 100 / maxTry;
-                        btnApplyVoltage.Enabled = false;
+                        controlVoltageProgress = currentTry * 100 / maxTry;
                     }
                     else
                     {
                         isControllingVoltage = 0;
+                        controlVoltageProgress = 0;
                         MessageBox.Show("Setup voltage FAIL!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        statusCtrlVoltage.Value = 0;
-                        btnApplyVoltage.Enabled = true;
                     }
 
                 }
@@ -200,7 +213,7 @@ namespace Electrochemical_Potentiostat
                     CVbtnImport.Enabled = true;
                     CVbtnExport.Enabled = true;
 
-                    EISprogressBar.Enabled = true;
+                    EISbtnMeasure.Enabled = true;
                     EISbtnImport.Enabled = true;
                     EISbtnExport.Enabled = true;
                 }
@@ -214,24 +227,36 @@ namespace Electrochemical_Potentiostat
                     //sonnh end
                 }
             }
+
             if (btnApplyVoltage.Enabled == false)   /*Controlling voltage*/
             {
+                //Console.WriteLine("control progress: " + controlVoltageProgress + "\tcurVoltage1: " + curVoltage1 + "\tcurVoltage2: " + curVoltage2);
+                statusCtrlVoltage.Value = controlVoltageProgress;
+                labelVoltage1.Text = curVoltage1;
+                labelVoltage2.Text = curVoltage2;
+
                 if (statusCtrlVoltage.Value > 0 && statusCtrlVoltage.Value < 100)
                 {
                     timeoutCtrlVoltage += 100;
-                    //Console.WriteLine("sonnh " + timeoutCtrlVoltage);
+                   //Console.WriteLine("sonnh " + timeoutCtrlVoltage);
                     if (timeoutCtrlVoltage >= MAX_TIMEOUT_CTRL_VOLTAGE)
                     {
                         timeoutCtrlVoltage = 0;
                         timer1.Stop();
                         MessageBox.Show("Device is not responding", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         timer1.Start();
+                        btnDisconnect.Enabled = true;
                         isControllingVoltage = 0;
                         btnApplyVoltage.Enabled = true;
                         statusCtrlVoltage.Value = 0;
 
                     }
 
+                }
+                else
+                {
+                    btnDisconnect.Enabled = true;
+                    btnApplyVoltage.Enabled = true;
                 }
 
             }
@@ -380,7 +405,7 @@ namespace Electrochemical_Potentiostat
             {
                 MessageBox.Show("Please complete all fields!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (EISprogressBar.Text == "Measure")
+            else if (EISbtnMeasure.Text == "Measure")
             {
                 buffSerial = new string[25000];
 
@@ -401,11 +426,11 @@ namespace Electrochemical_Potentiostat
 
                 if (EIScheckBoxSweepEn.Checked == true)
                 {
-                    EISprogressBar.Enabled = false;
+                    EISbtnMeasure.Enabled = false;
                 }
                 else
                 {
-                    EISprogressBar.Text = "Stop";
+                    EISbtnMeasure.Text = "Stop";
                 }
 
                 EISbtnClearAll.Enabled = false;
@@ -437,11 +462,12 @@ namespace Electrochemical_Potentiostat
                     str = "2#" + EISnumericStartFreq.Text + '?' + EISnumericStopFreq.Text + '/' + EISnumericSweepPoints.Text + '|' + EISnumericRepeatTimes.Text + '$' + logEn + '!';
                 }
                 isMeasuring = 1;
+                Console.WriteLine("EIS cmd: " + str);
                 serialPort1.Write(str);
             }
             else
             {
-                EISprogressBar.Text = "Measure";
+                EISbtnMeasure.Text = "Measure";
                 if (EIScheckBoxSweepEn.Checked == true)
                 {
                     EISbtnClearAll.Enabled = true;
@@ -756,12 +782,16 @@ namespace Electrochemical_Potentiostat
                 btnConnect.Enabled = true;
                 btnDisconnect.Enabled = false;
 
+                btnApplyVoltage.Enabled = true;
+                controlVoltageProgress = 0;
+                statusCtrlVoltage.Value = 0;
+
                 CVbtnMeasure.Enabled = true;
                 CVbtnClearAll.Enabled = true;
                 CVbtnImport.Enabled = true;
                 CVbtnExport.Enabled = true;
 
-                EISprogressBar.Enabled = true;
+                EISbtnMeasure.Enabled = true;
                 EISbtnClearAll.Enabled = true;
                 EISbtnImport.Enabled = true;
                 EISbtnExport.Enabled = true;
@@ -926,7 +956,7 @@ namespace Electrochemical_Potentiostat
             else
             {
                 string Voltage1 = comboBoxVoltage1.Text;
-                string Voltage2 = comboBoxVoltage1.Text;
+                string Voltage2 = comboBoxVoltage2.Text;
                 float v1 = float.Parse(Voltage1, CultureInfo.InvariantCulture.NumberFormat);
                 float v2 = float.Parse(Voltage2, CultureInfo.InvariantCulture.NumberFormat);
 
@@ -947,10 +977,12 @@ namespace Electrochemical_Potentiostat
                 }
                 //string str = "1#" + CVnumericStartVolt.Text + '?' + CVnumericEndVolt.Text + '/' + numStep.ToString() + '|' + CVnumericRepeatTimes.Text + "$0!";
                 string str = "3#" + Voltage1.ToString() + '?' + Voltage2.ToString() + "/" + "!";
+                btnDisconnect.Enabled = false;
                 isControllingVoltage = 1;
                 serialPort1.Write(str);
                 btnApplyVoltage.Enabled = false;
-                statusCtrlVoltage.Value = 20;
+                controlVoltageProgress = 20;
+
             }
         }
 
@@ -969,6 +1001,11 @@ namespace Electrochemical_Potentiostat
                 string str = "3#" + Voltage1.ToString() + '?' + Voltage2.ToString() + "/" + "!";
                 serialPort1.Write(str);
             }
+        }
+
+        private void EISprogressBar_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void statusCtrlVoltage_Click(object sender, EventArgs e)

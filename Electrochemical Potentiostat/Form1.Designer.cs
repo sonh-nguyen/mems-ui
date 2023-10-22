@@ -45,6 +45,7 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.statusCtrlVoltage = new System.Windows.Forms.ProgressBar();
             this.btnApplyVoltage = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -57,6 +58,8 @@
             this.selectPort = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.labelVoltage2 = new System.Windows.Forms.Label();
+            this.labelVoltage1 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -116,9 +119,6 @@
             this.tabCV = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.statusCtrlVoltage = new System.Windows.Forms.ProgressBar();
-            this.labelVoltage1 = new System.Windows.Forms.Label();
-            this.labelVoltage2 = new System.Windows.Forms.Label();
             this.tabCVEIS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.groupBoxEISResult.SuspendLayout();
@@ -160,7 +160,7 @@
             // 
             // tabCVEIS
             // 
-            this.tabCVEIS.BackColor = System.Drawing.Color.Honeydew;
+            this.tabCVEIS.BackColor = System.Drawing.Color.AliceBlue;
             this.tabCVEIS.Controls.Add(this.pictureBox6);
             this.tabCVEIS.Controls.Add(this.groupBoxEISResult);
             this.tabCVEIS.Controls.Add(this.EISzedGraphControl);
@@ -173,11 +173,11 @@
             this.tabCVEIS.Controls.Add(this.label15);
             this.tabCVEIS.Controls.Add(this.groupBoxDetection);
             this.tabCVEIS.Controls.Add(this.CVzedGraphControl);
-            this.tabCVEIS.Location = new System.Drawing.Point(4, 22);
-            this.tabCVEIS.Margin = new System.Windows.Forms.Padding(2);
+            this.tabCVEIS.Location = new System.Drawing.Point(4, 25);
+            this.tabCVEIS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabCVEIS.Name = "tabCVEIS";
-            this.tabCVEIS.Padding = new System.Windows.Forms.Padding(2);
-            this.tabCVEIS.Size = new System.Drawing.Size(1071, 640);
+            this.tabCVEIS.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabCVEIS.Size = new System.Drawing.Size(1431, 791);
             this.tabCVEIS.TabIndex = 2;
             this.tabCVEIS.Text = "Menu";
             this.tabCVEIS.Click += new System.EventHandler(this.tabCVEIS_Click);
@@ -185,10 +185,10 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::Electrochemical_Potentiostat.Properties.Resources.Logo_ĐH_Quốc_Gia_Hà_Nội_VNU;
-            this.pictureBox6.Location = new System.Drawing.Point(347, 6);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.pictureBox6.Location = new System.Drawing.Point(463, 7);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 7);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(43, 44);
+            this.pictureBox6.Size = new System.Drawing.Size(57, 54);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 33;
             this.pictureBox6.TabStop = false;
@@ -196,9 +196,11 @@
             // groupBoxEISResult
             // 
             this.groupBoxEISResult.Controls.Add(this.EISlistView);
-            this.groupBoxEISResult.Location = new System.Drawing.Point(800, 68);
+            this.groupBoxEISResult.Location = new System.Drawing.Point(1067, 84);
+            this.groupBoxEISResult.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxEISResult.Name = "groupBoxEISResult";
-            this.groupBoxEISResult.Size = new System.Drawing.Size(181, 562);
+            this.groupBoxEISResult.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxEISResult.Size = new System.Drawing.Size(241, 692);
             this.groupBoxEISResult.TabIndex = 32;
             this.groupBoxEISResult.TabStop = false;
             this.groupBoxEISResult.Text = "List Result Values";
@@ -211,9 +213,10 @@
             this.columnHeader10});
             this.EISlistView.GridLines = true;
             this.EISlistView.HideSelection = false;
-            this.EISlistView.Location = new System.Drawing.Point(6, 19);
+            this.EISlistView.Location = new System.Drawing.Point(8, 23);
+            this.EISlistView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISlistView.Name = "EISlistView";
-            this.EISlistView.Size = new System.Drawing.Size(169, 534);
+            this.EISlistView.Size = new System.Drawing.Size(224, 656);
             this.EISlistView.TabIndex = 0;
             this.EISlistView.UseCompatibleStateImageBehavior = false;
             this.EISlistView.View = System.Windows.Forms.View.Details;
@@ -236,8 +239,8 @@
             // 
             // EISzedGraphControl
             // 
-            this.EISzedGraphControl.Location = new System.Drawing.Point(305, 297);
-            this.EISzedGraphControl.Margin = new System.Windows.Forms.Padding(4);
+            this.EISzedGraphControl.Location = new System.Drawing.Point(407, 366);
+            this.EISzedGraphControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.EISzedGraphControl.Name = "EISzedGraphControl";
             this.EISzedGraphControl.ScrollGrace = 0D;
             this.EISzedGraphControl.ScrollMaxX = 0D;
@@ -246,16 +249,18 @@
             this.EISzedGraphControl.ScrollMinX = 0D;
             this.EISzedGraphControl.ScrollMinY = 0D;
             this.EISzedGraphControl.ScrollMinY2 = 0D;
-            this.EISzedGraphControl.Size = new System.Drawing.Size(451, 333);
+            this.EISzedGraphControl.Size = new System.Drawing.Size(601, 410);
             this.EISzedGraphControl.TabIndex = 31;
             this.EISzedGraphControl.UseExtendedPrintDialog = true;
             // 
             // groupBoxCVResult
             // 
             this.groupBoxCVResult.Controls.Add(this.CVlistView);
-            this.groupBoxCVResult.Location = new System.Drawing.Point(800, 68);
+            this.groupBoxCVResult.Location = new System.Drawing.Point(1067, 84);
+            this.groupBoxCVResult.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxCVResult.Name = "groupBoxCVResult";
-            this.groupBoxCVResult.Size = new System.Drawing.Size(181, 562);
+            this.groupBoxCVResult.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxCVResult.Size = new System.Drawing.Size(241, 692);
             this.groupBoxCVResult.TabIndex = 30;
             this.groupBoxCVResult.TabStop = false;
             this.groupBoxCVResult.Text = "List Result Values";
@@ -267,9 +272,10 @@
             this.columnHeader7});
             this.CVlistView.GridLines = true;
             this.CVlistView.HideSelection = false;
-            this.CVlistView.Location = new System.Drawing.Point(6, 20);
+            this.CVlistView.Location = new System.Drawing.Point(8, 25);
+            this.CVlistView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVlistView.Name = "CVlistView";
-            this.CVlistView.Size = new System.Drawing.Size(167, 533);
+            this.CVlistView.Size = new System.Drawing.Size(221, 655);
             this.CVlistView.TabIndex = 0;
             this.CVlistView.UseCompatibleStateImageBehavior = false;
             this.CVlistView.View = System.Windows.Forms.View.Details;
@@ -293,20 +299,31 @@
             this.groupBox7.Controls.Add(this.comboBoxVoltage2);
             this.groupBox7.Controls.Add(this.comboBoxVoltage1);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(40, 141);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.groupBox7.Location = new System.Drawing.Point(53, 174);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 7);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(221, 105);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Size = new System.Drawing.Size(295, 129);
             this.groupBox7.TabIndex = 27;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Preconcentration";
             this.groupBox7.Enter += new System.EventHandler(this.groupBox7_Enter);
             // 
+            // statusCtrlVoltage
+            // 
+            this.statusCtrlVoltage.Location = new System.Drawing.Point(164, 92);
+            this.statusCtrlVoltage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statusCtrlVoltage.Name = "statusCtrlVoltage";
+            this.statusCtrlVoltage.Size = new System.Drawing.Size(97, 25);
+            this.statusCtrlVoltage.TabIndex = 5;
+            this.statusCtrlVoltage.Click += new System.EventHandler(this.statusCtrlVoltage_Click);
+            // 
             // btnApplyVoltage
             // 
-            this.btnApplyVoltage.Location = new System.Drawing.Point(42, 75);
+            this.btnApplyVoltage.Location = new System.Drawing.Point(56, 92);
+            this.btnApplyVoltage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnApplyVoltage.Name = "btnApplyVoltage";
-            this.btnApplyVoltage.Size = new System.Drawing.Size(75, 23);
+            this.btnApplyVoltage.Size = new System.Drawing.Size(100, 28);
             this.btnApplyVoltage.TabIndex = 6;
             this.btnApplyVoltage.Text = "Apply";
             this.btnApplyVoltage.UseVisualStyleBackColor = true;
@@ -315,18 +332,20 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(39, 47);
+            this.label18.Location = new System.Drawing.Point(52, 58);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(68, 13);
+            this.label18.Size = new System.Drawing.Size(91, 17);
             this.label18.TabIndex = 3;
             this.label18.Text = "Voltage 2 (V)";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(39, 20);
+            this.label17.Location = new System.Drawing.Point(52, 25);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(68, 13);
+            this.label17.Size = new System.Drawing.Size(91, 17);
             this.label17.TabIndex = 2;
             this.label17.Text = "Voltage 1 (V)";
             // 
@@ -349,9 +368,10 @@
             "75",
             "80",
             "85"});
-            this.comboBoxVoltage2.Location = new System.Drawing.Point(120, 44);
+            this.comboBoxVoltage2.Location = new System.Drawing.Point(160, 54);
+            this.comboBoxVoltage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxVoltage2.Name = "comboBoxVoltage2";
-            this.comboBoxVoltage2.Size = new System.Drawing.Size(78, 21);
+            this.comboBoxVoltage2.Size = new System.Drawing.Size(103, 25);
             this.comboBoxVoltage2.TabIndex = 1;
             this.comboBoxVoltage2.SelectedIndexChanged += new System.EventHandler(this.comboBoxVoltage2_SelectedIndexChanged);
             // 
@@ -374,9 +394,10 @@
             "75",
             "80",
             "85"});
-            this.comboBoxVoltage1.Location = new System.Drawing.Point(121, 17);
+            this.comboBoxVoltage1.Location = new System.Drawing.Point(161, 21);
+            this.comboBoxVoltage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxVoltage1.Name = "comboBoxVoltage1";
-            this.comboBoxVoltage1.Size = new System.Drawing.Size(77, 21);
+            this.comboBoxVoltage1.Size = new System.Drawing.Size(101, 25);
             this.comboBoxVoltage1.TabIndex = 0;
             this.comboBoxVoltage1.SelectedIndexChanged += new System.EventHandler(this.comboBoxVoltage1_SelectedIndexChanged);
             // 
@@ -387,27 +408,30 @@
             this.groupBox13.Controls.Add(this.btnConnect);
             this.groupBox13.Controls.Add(this.selectPort);
             this.groupBox13.Controls.Add(this.label29);
-            this.groupBox13.Location = new System.Drawing.Point(40, 65);
-            this.groupBox13.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.groupBox13.Location = new System.Drawing.Point(53, 80);
+            this.groupBox13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 7);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(221, 77);
+            this.groupBox13.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox13.Size = new System.Drawing.Size(295, 95);
             this.groupBox13.TabIndex = 26;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Serial Port Control";
             // 
             // statusCOM
             // 
-            this.statusCOM.Location = new System.Drawing.Point(129, 21);
+            this.statusCOM.Location = new System.Drawing.Point(172, 26);
+            this.statusCOM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.statusCOM.Name = "statusCOM";
-            this.statusCOM.Size = new System.Drawing.Size(73, 20);
+            this.statusCOM.Size = new System.Drawing.Size(97, 25);
             this.statusCOM.TabIndex = 4;
             // 
             // btnDisconnect
             // 
             this.btnDisconnect.Enabled = false;
-            this.btnDisconnect.Location = new System.Drawing.Point(127, 47);
+            this.btnDisconnect.Location = new System.Drawing.Point(169, 58);
+            this.btnDisconnect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDisconnect.Name = "btnDisconnect";
-            this.btnDisconnect.Size = new System.Drawing.Size(75, 23);
+            this.btnDisconnect.Size = new System.Drawing.Size(100, 28);
             this.btnDisconnect.TabIndex = 3;
             this.btnDisconnect.Text = "Disconnect";
             this.btnDisconnect.UseVisualStyleBackColor = true;
@@ -415,9 +439,10 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(42, 47);
+            this.btnConnect.Location = new System.Drawing.Point(56, 58);
+            this.btnConnect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(75, 23);
+            this.btnConnect.Size = new System.Drawing.Size(100, 28);
             this.btnConnect.TabIndex = 2;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -426,18 +451,20 @@
             // selectPort
             // 
             this.selectPort.FormattingEnabled = true;
-            this.selectPort.Location = new System.Drawing.Point(42, 20);
+            this.selectPort.Location = new System.Drawing.Point(56, 25);
+            this.selectPort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selectPort.Name = "selectPort";
-            this.selectPort.Size = new System.Drawing.Size(75, 21);
+            this.selectPort.Size = new System.Drawing.Size(99, 24);
             this.selectPort.TabIndex = 1;
             this.selectPort.SelectedIndexChanged += new System.EventHandler(this.selectPort_SelectedIndexChanged);
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(7, 23);
+            this.label29.Location = new System.Drawing.Point(9, 28);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(29, 13);
+            this.label29.Size = new System.Drawing.Size(34, 16);
             this.label29.TabIndex = 0;
             this.label29.Text = "Port:";
             // 
@@ -447,24 +474,49 @@
             this.groupBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBox12.Controls.Add(this.labelVoltage2);
             this.groupBox12.Controls.Add(this.labelVoltage1);
-            this.groupBox12.Location = new System.Drawing.Point(306, 96);
-            this.groupBox12.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox12.Location = new System.Drawing.Point(408, 118);
+            this.groupBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox12.Size = new System.Drawing.Size(450, 195);
+            this.groupBox12.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox12.Size = new System.Drawing.Size(600, 240);
             this.groupBox12.TabIndex = 21;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Cấu trúc chip";
+            // 
+            // labelVoltage2
+            // 
+            this.labelVoltage2.AutoSize = true;
+            this.labelVoltage2.BackColor = System.Drawing.Color.Transparent;
+            this.labelVoltage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVoltage2.ForeColor = System.Drawing.Color.Firebrick;
+            this.labelVoltage2.Location = new System.Drawing.Point(537, 91);
+            this.labelVoltage2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelVoltage2.Name = "labelVoltage2";
+            this.labelVoltage2.Size = new System.Drawing.Size(40, 20);
+            this.labelVoltage2.TabIndex = 35;
+            this.labelVoltage2.Text = "N/A";
+            // 
+            // labelVoltage1
+            // 
+            this.labelVoltage1.AutoSize = true;
+            this.labelVoltage1.BackColor = System.Drawing.Color.Transparent;
+            this.labelVoltage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVoltage1.ForeColor = System.Drawing.Color.Firebrick;
+            this.labelVoltage1.Location = new System.Drawing.Point(19, 90);
+            this.labelVoltage1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelVoltage1.Name = "labelVoltage1";
+            this.labelVoltage1.Size = new System.Drawing.Size(40, 20);
+            this.labelVoltage1.TabIndex = 34;
+            this.labelVoltage1.Text = "N/A";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label16.Location = new System.Drawing.Point(276, 50);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Location = new System.Drawing.Point(368, 62);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(510, 34);
+            this.label16.Size = new System.Drawing.Size(636, 44);
             this.label16.TabIndex = 18;
             this.label16.Text = "Hệ thống đo đọc tín hiệu từ chip sinh học tập trung và phát hiện protein NSE \r\n(M" +
     "ã số: NĐT.101.TW/21)\r\n";
@@ -473,10 +525,10 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::Electrochemical_Potentiostat.Properties.Resources.Logo_ĐH_Công_Nghệ_UET;
-            this.pictureBox5.Location = new System.Drawing.Point(653, 6);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.pictureBox5.Location = new System.Drawing.Point(871, 7);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 7);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(43, 41);
+            this.pictureBox5.Size = new System.Drawing.Size(57, 50);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 17;
             this.pictureBox5.TabStop = false;
@@ -486,10 +538,9 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label15.Location = new System.Drawing.Point(395, 12);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Location = new System.Drawing.Point(527, 15);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(253, 38);
+            this.label15.Size = new System.Drawing.Size(317, 46);
             this.label15.TabIndex = 0;
             this.label15.Text = "ĐẠI HỌC QUỐC GIA HÀ NỘI\r\nTRƯỜNG ĐẠI HỌC CÔNG NGHỆ";
             this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -505,10 +556,11 @@
             this.groupBoxDetection.Controls.Add(this.label21);
             this.groupBoxDetection.Controls.Add(this.comboBoxMethod);
             this.groupBoxDetection.Controls.Add(this.groupBoxCVParam);
-            this.groupBoxDetection.Location = new System.Drawing.Point(40, 245);
-            this.groupBoxDetection.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.groupBoxDetection.Location = new System.Drawing.Point(53, 302);
+            this.groupBoxDetection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 7);
             this.groupBoxDetection.Name = "groupBoxDetection";
-            this.groupBoxDetection.Size = new System.Drawing.Size(221, 392);
+            this.groupBoxDetection.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxDetection.Size = new System.Drawing.Size(295, 482);
             this.groupBoxDetection.TabIndex = 28;
             this.groupBoxDetection.TabStop = false;
             this.groupBoxDetection.Text = "Detection";
@@ -520,26 +572,30 @@
             this.groupBoxEISMeasure.Controls.Add(this.EISbtnImport);
             this.groupBoxEISMeasure.Controls.Add(this.EISbtnClearAll);
             this.groupBoxEISMeasure.Controls.Add(this.EISbtnMeasure);
-            this.groupBoxEISMeasure.Location = new System.Drawing.Point(22, 283);
-            this.groupBoxEISMeasure.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.groupBoxEISMeasure.Location = new System.Drawing.Point(29, 348);
+            this.groupBoxEISMeasure.Margin = new System.Windows.Forms.Padding(4, 4, 4, 7);
             this.groupBoxEISMeasure.Name = "groupBoxEISMeasure";
-            this.groupBoxEISMeasure.Size = new System.Drawing.Size(177, 107);
+            this.groupBoxEISMeasure.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxEISMeasure.Size = new System.Drawing.Size(236, 132);
             this.groupBoxEISMeasure.TabIndex = 12;
             this.groupBoxEISMeasure.TabStop = false;
             this.groupBoxEISMeasure.Text = "Program Control";
             // 
             // EISprogressBar
             // 
-            this.EISprogressBar.Location = new System.Drawing.Point(6, 20);
+            this.EISprogressBar.Location = new System.Drawing.Point(8, 25);
+            this.EISprogressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISprogressBar.Name = "EISprogressBar";
-            this.EISprogressBar.Size = new System.Drawing.Size(164, 15);
+            this.EISprogressBar.Size = new System.Drawing.Size(219, 18);
             this.EISprogressBar.TabIndex = 4;
+            this.EISprogressBar.Click += new System.EventHandler(this.EISprogressBar_Click);
             // 
             // EISbtnExport
             // 
-            this.EISbtnExport.Location = new System.Drawing.Point(91, 73);
+            this.EISbtnExport.Location = new System.Drawing.Point(121, 90);
+            this.EISbtnExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISbtnExport.Name = "EISbtnExport";
-            this.EISbtnExport.Size = new System.Drawing.Size(75, 23);
+            this.EISbtnExport.Size = new System.Drawing.Size(100, 28);
             this.EISbtnExport.TabIndex = 3;
             this.EISbtnExport.Text = "Export File";
             this.EISbtnExport.UseVisualStyleBackColor = true;
@@ -547,9 +603,10 @@
             // 
             // EISbtnImport
             // 
-            this.EISbtnImport.Location = new System.Drawing.Point(9, 73);
+            this.EISbtnImport.Location = new System.Drawing.Point(12, 90);
+            this.EISbtnImport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISbtnImport.Name = "EISbtnImport";
-            this.EISbtnImport.Size = new System.Drawing.Size(75, 23);
+            this.EISbtnImport.Size = new System.Drawing.Size(100, 28);
             this.EISbtnImport.TabIndex = 2;
             this.EISbtnImport.Text = "Import File";
             this.EISbtnImport.UseVisualStyleBackColor = true;
@@ -557,9 +614,10 @@
             // 
             // EISbtnClearAll
             // 
-            this.EISbtnClearAll.Location = new System.Drawing.Point(91, 41);
+            this.EISbtnClearAll.Location = new System.Drawing.Point(121, 50);
+            this.EISbtnClearAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISbtnClearAll.Name = "EISbtnClearAll";
-            this.EISbtnClearAll.Size = new System.Drawing.Size(75, 23);
+            this.EISbtnClearAll.Size = new System.Drawing.Size(100, 28);
             this.EISbtnClearAll.TabIndex = 1;
             this.EISbtnClearAll.Text = "Clear All";
             this.EISbtnClearAll.UseVisualStyleBackColor = true;
@@ -567,9 +625,10 @@
             // 
             // EISbtnMeasure
             // 
-            this.EISbtnMeasure.Location = new System.Drawing.Point(9, 41);
+            this.EISbtnMeasure.Location = new System.Drawing.Point(12, 50);
+            this.EISbtnMeasure.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISbtnMeasure.Name = "EISbtnMeasure";
-            this.EISbtnMeasure.Size = new System.Drawing.Size(75, 23);
+            this.EISbtnMeasure.Size = new System.Drawing.Size(100, 28);
             this.EISbtnMeasure.TabIndex = 0;
             this.EISbtnMeasure.Text = "Measure";
             this.EISbtnMeasure.UseVisualStyleBackColor = true;
@@ -584,9 +643,11 @@
             this.groupBoxShowSweepTimes.Controls.Add(this.EISradioBtn2nd);
             this.groupBoxShowSweepTimes.Controls.Add(this.EISradioBtn1st);
             this.groupBoxShowSweepTimes.Enabled = false;
-            this.groupBoxShowSweepTimes.Location = new System.Drawing.Point(22, 210);
+            this.groupBoxShowSweepTimes.Location = new System.Drawing.Point(29, 258);
+            this.groupBoxShowSweepTimes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxShowSweepTimes.Name = "groupBoxShowSweepTimes";
-            this.groupBoxShowSweepTimes.Size = new System.Drawing.Size(177, 73);
+            this.groupBoxShowSweepTimes.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxShowSweepTimes.Size = new System.Drawing.Size(236, 90);
             this.groupBoxShowSweepTimes.TabIndex = 12;
             this.groupBoxShowSweepTimes.TabStop = false;
             this.groupBoxShowSweepTimes.Text = "Show sweep times";
@@ -594,9 +655,10 @@
             // EISradioBtn6th
             // 
             this.EISradioBtn6th.AutoSize = true;
-            this.EISradioBtn6th.Location = new System.Drawing.Point(122, 45);
+            this.EISradioBtn6th.Location = new System.Drawing.Point(163, 55);
+            this.EISradioBtn6th.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISradioBtn6th.Name = "EISradioBtn6th";
-            this.EISradioBtn6th.Size = new System.Drawing.Size(40, 17);
+            this.EISradioBtn6th.Size = new System.Drawing.Size(45, 20);
             this.EISradioBtn6th.TabIndex = 6;
             this.EISradioBtn6th.Text = "6th";
             this.EISradioBtn6th.UseVisualStyleBackColor = true;
@@ -604,9 +666,10 @@
             // EISradioBtn5th
             // 
             this.EISradioBtn5th.AutoSize = true;
-            this.EISradioBtn5th.Location = new System.Drawing.Point(64, 45);
+            this.EISradioBtn5th.Location = new System.Drawing.Point(85, 55);
+            this.EISradioBtn5th.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISradioBtn5th.Name = "EISradioBtn5th";
-            this.EISradioBtn5th.Size = new System.Drawing.Size(40, 17);
+            this.EISradioBtn5th.Size = new System.Drawing.Size(45, 20);
             this.EISradioBtn5th.TabIndex = 5;
             this.EISradioBtn5th.Text = "5th";
             this.EISradioBtn5th.UseVisualStyleBackColor = true;
@@ -614,9 +677,10 @@
             // EISradioBtn4th
             // 
             this.EISradioBtn4th.AutoSize = true;
-            this.EISradioBtn4th.Location = new System.Drawing.Point(10, 45);
+            this.EISradioBtn4th.Location = new System.Drawing.Point(13, 55);
+            this.EISradioBtn4th.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISradioBtn4th.Name = "EISradioBtn4th";
-            this.EISradioBtn4th.Size = new System.Drawing.Size(40, 17);
+            this.EISradioBtn4th.Size = new System.Drawing.Size(45, 20);
             this.EISradioBtn4th.TabIndex = 4;
             this.EISradioBtn4th.Text = "4th";
             this.EISradioBtn4th.UseVisualStyleBackColor = true;
@@ -624,9 +688,10 @@
             // EISradioBtn3rd
             // 
             this.EISradioBtn3rd.AutoSize = true;
-            this.EISradioBtn3rd.Location = new System.Drawing.Point(122, 19);
+            this.EISradioBtn3rd.Location = new System.Drawing.Point(163, 23);
+            this.EISradioBtn3rd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISradioBtn3rd.Name = "EISradioBtn3rd";
-            this.EISradioBtn3rd.Size = new System.Drawing.Size(40, 17);
+            this.EISradioBtn3rd.Size = new System.Drawing.Size(47, 20);
             this.EISradioBtn3rd.TabIndex = 3;
             this.EISradioBtn3rd.Text = "3rd";
             this.EISradioBtn3rd.UseVisualStyleBackColor = true;
@@ -635,9 +700,10 @@
             // 
             this.EISradioBtn2nd.AutoSize = true;
             this.EISradioBtn2nd.Checked = true;
-            this.EISradioBtn2nd.Location = new System.Drawing.Point(64, 19);
+            this.EISradioBtn2nd.Location = new System.Drawing.Point(85, 23);
+            this.EISradioBtn2nd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISradioBtn2nd.Name = "EISradioBtn2nd";
-            this.EISradioBtn2nd.Size = new System.Drawing.Size(43, 17);
+            this.EISradioBtn2nd.Size = new System.Drawing.Size(50, 20);
             this.EISradioBtn2nd.TabIndex = 2;
             this.EISradioBtn2nd.TabStop = true;
             this.EISradioBtn2nd.Text = "2nd";
@@ -646,9 +712,10 @@
             // EISradioBtn1st
             // 
             this.EISradioBtn1st.AutoSize = true;
-            this.EISradioBtn1st.Location = new System.Drawing.Point(10, 19);
+            this.EISradioBtn1st.Location = new System.Drawing.Point(13, 23);
+            this.EISradioBtn1st.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISradioBtn1st.Name = "EISradioBtn1st";
-            this.EISradioBtn1st.Size = new System.Drawing.Size(39, 17);
+            this.EISradioBtn1st.Size = new System.Drawing.Size(45, 20);
             this.EISradioBtn1st.TabIndex = 1;
             this.EISradioBtn1st.Text = "1st";
             this.EISradioBtn1st.UseVisualStyleBackColor = true;
@@ -660,26 +727,29 @@
             this.groupBoxCVMeasure.Controls.Add(this.CVbtnImport);
             this.groupBoxCVMeasure.Controls.Add(this.CVbtnClearAll);
             this.groupBoxCVMeasure.Controls.Add(this.CVbtnMeasure);
-            this.groupBoxCVMeasure.Location = new System.Drawing.Point(22, 283);
-            this.groupBoxCVMeasure.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.groupBoxCVMeasure.Location = new System.Drawing.Point(29, 348);
+            this.groupBoxCVMeasure.Margin = new System.Windows.Forms.Padding(4, 4, 4, 7);
             this.groupBoxCVMeasure.Name = "groupBoxCVMeasure";
-            this.groupBoxCVMeasure.Size = new System.Drawing.Size(177, 106);
+            this.groupBoxCVMeasure.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxCVMeasure.Size = new System.Drawing.Size(236, 130);
             this.groupBoxCVMeasure.TabIndex = 11;
             this.groupBoxCVMeasure.TabStop = false;
             this.groupBoxCVMeasure.Text = "Program Control";
             // 
             // CVprogressBar
             // 
-            this.CVprogressBar.Location = new System.Drawing.Point(6, 20);
+            this.CVprogressBar.Location = new System.Drawing.Point(8, 25);
+            this.CVprogressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVprogressBar.Name = "CVprogressBar";
-            this.CVprogressBar.Size = new System.Drawing.Size(164, 15);
+            this.CVprogressBar.Size = new System.Drawing.Size(219, 18);
             this.CVprogressBar.TabIndex = 4;
             // 
             // CVbtnExport
             // 
-            this.CVbtnExport.Location = new System.Drawing.Point(91, 73);
+            this.CVbtnExport.Location = new System.Drawing.Point(121, 90);
+            this.CVbtnExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVbtnExport.Name = "CVbtnExport";
-            this.CVbtnExport.Size = new System.Drawing.Size(75, 23);
+            this.CVbtnExport.Size = new System.Drawing.Size(100, 28);
             this.CVbtnExport.TabIndex = 3;
             this.CVbtnExport.Text = "Export File";
             this.CVbtnExport.UseVisualStyleBackColor = true;
@@ -687,9 +757,10 @@
             // 
             // CVbtnImport
             // 
-            this.CVbtnImport.Location = new System.Drawing.Point(9, 73);
+            this.CVbtnImport.Location = new System.Drawing.Point(12, 90);
+            this.CVbtnImport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVbtnImport.Name = "CVbtnImport";
-            this.CVbtnImport.Size = new System.Drawing.Size(75, 23);
+            this.CVbtnImport.Size = new System.Drawing.Size(100, 28);
             this.CVbtnImport.TabIndex = 2;
             this.CVbtnImport.Text = "Import File";
             this.CVbtnImport.UseVisualStyleBackColor = true;
@@ -697,9 +768,10 @@
             // 
             // CVbtnClearAll
             // 
-            this.CVbtnClearAll.Location = new System.Drawing.Point(91, 41);
+            this.CVbtnClearAll.Location = new System.Drawing.Point(121, 50);
+            this.CVbtnClearAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVbtnClearAll.Name = "CVbtnClearAll";
-            this.CVbtnClearAll.Size = new System.Drawing.Size(75, 23);
+            this.CVbtnClearAll.Size = new System.Drawing.Size(100, 28);
             this.CVbtnClearAll.TabIndex = 1;
             this.CVbtnClearAll.Text = "Clear All";
             this.CVbtnClearAll.UseVisualStyleBackColor = true;
@@ -707,9 +779,10 @@
             // 
             // CVbtnMeasure
             // 
-            this.CVbtnMeasure.Location = new System.Drawing.Point(9, 41);
+            this.CVbtnMeasure.Location = new System.Drawing.Point(12, 50);
+            this.CVbtnMeasure.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVbtnMeasure.Name = "CVbtnMeasure";
-            this.CVbtnMeasure.Size = new System.Drawing.Size(75, 23);
+            this.CVbtnMeasure.Size = new System.Drawing.Size(100, 28);
             this.CVbtnMeasure.TabIndex = 0;
             this.CVbtnMeasure.Text = "Measure";
             this.CVbtnMeasure.UseVisualStyleBackColor = true;
@@ -727,11 +800,11 @@
             this.groupBoxEISParam.Controls.Add(this.label27);
             this.groupBoxEISParam.Controls.Add(this.label28);
             this.groupBoxEISParam.Controls.Add(this.label30);
-            this.groupBoxEISParam.Location = new System.Drawing.Point(22, 39);
-            this.groupBoxEISParam.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.groupBoxEISParam.Location = new System.Drawing.Point(29, 48);
+            this.groupBoxEISParam.Margin = new System.Windows.Forms.Padding(4, 4, 4, 7);
             this.groupBoxEISParam.Name = "groupBoxEISParam";
-            this.groupBoxEISParam.Padding = new System.Windows.Forms.Padding(3, 3, 3, 2);
-            this.groupBoxEISParam.Size = new System.Drawing.Size(177, 168);
+            this.groupBoxEISParam.Padding = new System.Windows.Forms.Padding(4, 4, 4, 2);
+            this.groupBoxEISParam.Size = new System.Drawing.Size(236, 207);
             this.groupBoxEISParam.TabIndex = 12;
             this.groupBoxEISParam.TabStop = false;
             this.groupBoxEISParam.Text = "Parameter config";
@@ -741,16 +814,18 @@
             // 
             this.EIScheckBoxLog.AutoSize = true;
             this.EIScheckBoxLog.Enabled = false;
-            this.EIScheckBoxLog.Location = new System.Drawing.Point(9, 38);
+            this.EIScheckBoxLog.Location = new System.Drawing.Point(12, 47);
+            this.EIScheckBoxLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EIScheckBoxLog.Name = "EIScheckBoxLog";
-            this.EIScheckBoxLog.Size = new System.Drawing.Size(80, 17);
+            this.EIScheckBoxLog.Size = new System.Drawing.Size(98, 20);
             this.EIScheckBoxLog.TabIndex = 1;
             this.EIScheckBoxLog.Text = "Logarithmic";
             this.EIScheckBoxLog.UseVisualStyleBackColor = true;
             // 
             // EISnumericStartFreq
             // 
-            this.EISnumericStartFreq.Location = new System.Drawing.Point(98, 60);
+            this.EISnumericStartFreq.Location = new System.Drawing.Point(131, 74);
+            this.EISnumericStartFreq.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISnumericStartFreq.Maximum = new decimal(new int[] {
             200000,
             0,
@@ -762,7 +837,7 @@
             0,
             0});
             this.EISnumericStartFreq.Name = "EISnumericStartFreq";
-            this.EISnumericStartFreq.Size = new System.Drawing.Size(70, 20);
+            this.EISnumericStartFreq.Size = new System.Drawing.Size(93, 22);
             this.EISnumericStartFreq.TabIndex = 9;
             this.EISnumericStartFreq.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.EISnumericStartFreq.Value = new decimal(new int[] {
@@ -774,9 +849,10 @@
             // EIScheckBoxSweepEn
             // 
             this.EIScheckBoxSweepEn.AutoSize = true;
-            this.EIScheckBoxSweepEn.Location = new System.Drawing.Point(10, 19);
+            this.EIScheckBoxSweepEn.Location = new System.Drawing.Point(13, 23);
+            this.EIScheckBoxSweepEn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EIScheckBoxSweepEn.Name = "EIScheckBoxSweepEn";
-            this.EIScheckBoxSweepEn.Size = new System.Drawing.Size(94, 17);
+            this.EIScheckBoxSweepEn.Size = new System.Drawing.Size(116, 20);
             this.EIScheckBoxSweepEn.TabIndex = 0;
             this.EIScheckBoxSweepEn.Text = "Sweep enable";
             this.EIScheckBoxSweepEn.UseVisualStyleBackColor = true;
@@ -785,7 +861,8 @@
             // EISnumericStopFreq
             // 
             this.EISnumericStopFreq.Enabled = false;
-            this.EISnumericStopFreq.Location = new System.Drawing.Point(99, 86);
+            this.EISnumericStopFreq.Location = new System.Drawing.Point(132, 106);
+            this.EISnumericStopFreq.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISnumericStopFreq.Maximum = new decimal(new int[] {
             200000,
             0,
@@ -797,7 +874,7 @@
             0,
             0});
             this.EISnumericStopFreq.Name = "EISnumericStopFreq";
-            this.EISnumericStopFreq.Size = new System.Drawing.Size(70, 20);
+            this.EISnumericStopFreq.Size = new System.Drawing.Size(93, 22);
             this.EISnumericStopFreq.TabIndex = 8;
             this.EISnumericStopFreq.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.EISnumericStopFreq.Value = new decimal(new int[] {
@@ -809,7 +886,8 @@
             // EISnumericSweepPoints
             // 
             this.EISnumericSweepPoints.Enabled = false;
-            this.EISnumericSweepPoints.Location = new System.Drawing.Point(99, 112);
+            this.EISnumericSweepPoints.Location = new System.Drawing.Point(132, 138);
+            this.EISnumericSweepPoints.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISnumericSweepPoints.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -821,7 +899,7 @@
             0,
             0});
             this.EISnumericSweepPoints.Name = "EISnumericSweepPoints";
-            this.EISnumericSweepPoints.Size = new System.Drawing.Size(70, 20);
+            this.EISnumericSweepPoints.Size = new System.Drawing.Size(93, 22);
             this.EISnumericSweepPoints.TabIndex = 7;
             this.EISnumericSweepPoints.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.EISnumericSweepPoints.Value = new decimal(new int[] {
@@ -833,7 +911,8 @@
             // EISnumericRepeatTimes
             // 
             this.EISnumericRepeatTimes.Enabled = false;
-            this.EISnumericRepeatTimes.Location = new System.Drawing.Point(99, 138);
+            this.EISnumericRepeatTimes.Location = new System.Drawing.Point(132, 170);
+            this.EISnumericRepeatTimes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EISnumericRepeatTimes.Maximum = new decimal(new int[] {
             6,
             0,
@@ -845,7 +924,7 @@
             0,
             0});
             this.EISnumericRepeatTimes.Name = "EISnumericRepeatTimes";
-            this.EISnumericRepeatTimes.Size = new System.Drawing.Size(70, 20);
+            this.EISnumericRepeatTimes.Size = new System.Drawing.Size(93, 22);
             this.EISnumericRepeatTimes.TabIndex = 4;
             this.EISnumericRepeatTimes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.EISnumericRepeatTimes.Value = new decimal(new int[] {
@@ -857,36 +936,40 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(5, 140);
+            this.label26.Location = new System.Drawing.Point(7, 172);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(73, 13);
+            this.label26.Size = new System.Drawing.Size(93, 16);
             this.label26.TabIndex = 6;
             this.label26.Text = "Repeat Times";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(5, 114);
+            this.label27.Location = new System.Drawing.Point(7, 140);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(72, 13);
+            this.label27.Size = new System.Drawing.Size(89, 16);
             this.label27.TabIndex = 4;
             this.label27.Text = "Sweep Points";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(4, 88);
+            this.label28.Location = new System.Drawing.Point(5, 108);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(75, 13);
+            this.label28.Size = new System.Drawing.Size(93, 16);
             this.label28.TabIndex = 2;
             this.label28.Text = "Stop Freq (Hz)";
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(4, 62);
+            this.label30.Location = new System.Drawing.Point(5, 76);
+            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(75, 13);
+            this.label30.Size = new System.Drawing.Size(92, 16);
             this.label30.TabIndex = 0;
             this.label30.Text = "Start Freq (Hz)";
             // 
@@ -899,9 +982,11 @@
             this.groupBoxCVSweep.Controls.Add(this.CVradioBtn2nd);
             this.groupBoxCVSweep.Controls.Add(this.CVradioBtn1st);
             this.groupBoxCVSweep.Controls.Add(this.CVradioBtnShowAllSweeps);
-            this.groupBoxCVSweep.Location = new System.Drawing.Point(22, 179);
+            this.groupBoxCVSweep.Location = new System.Drawing.Point(29, 220);
+            this.groupBoxCVSweep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxCVSweep.Name = "groupBoxCVSweep";
-            this.groupBoxCVSweep.Size = new System.Drawing.Size(177, 98);
+            this.groupBoxCVSweep.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxCVSweep.Size = new System.Drawing.Size(236, 121);
             this.groupBoxCVSweep.TabIndex = 10;
             this.groupBoxCVSweep.TabStop = false;
             this.groupBoxCVSweep.Text = "Show sweep times";
@@ -909,9 +994,10 @@
             // CVradioBtn6th
             // 
             this.CVradioBtn6th.AutoSize = true;
-            this.CVradioBtn6th.Location = new System.Drawing.Point(122, 71);
+            this.CVradioBtn6th.Location = new System.Drawing.Point(163, 87);
+            this.CVradioBtn6th.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVradioBtn6th.Name = "CVradioBtn6th";
-            this.CVradioBtn6th.Size = new System.Drawing.Size(40, 17);
+            this.CVradioBtn6th.Size = new System.Drawing.Size(45, 20);
             this.CVradioBtn6th.TabIndex = 6;
             this.CVradioBtn6th.Text = "6th";
             this.CVradioBtn6th.UseVisualStyleBackColor = true;
@@ -919,9 +1005,10 @@
             // CVradioBtn5th
             // 
             this.CVradioBtn5th.AutoSize = true;
-            this.CVradioBtn5th.Location = new System.Drawing.Point(64, 71);
+            this.CVradioBtn5th.Location = new System.Drawing.Point(85, 87);
+            this.CVradioBtn5th.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVradioBtn5th.Name = "CVradioBtn5th";
-            this.CVradioBtn5th.Size = new System.Drawing.Size(40, 17);
+            this.CVradioBtn5th.Size = new System.Drawing.Size(45, 20);
             this.CVradioBtn5th.TabIndex = 5;
             this.CVradioBtn5th.Text = "5th";
             this.CVradioBtn5th.UseVisualStyleBackColor = true;
@@ -929,9 +1016,10 @@
             // CVradioBtn4th
             // 
             this.CVradioBtn4th.AutoSize = true;
-            this.CVradioBtn4th.Location = new System.Drawing.Point(10, 71);
+            this.CVradioBtn4th.Location = new System.Drawing.Point(13, 87);
+            this.CVradioBtn4th.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVradioBtn4th.Name = "CVradioBtn4th";
-            this.CVradioBtn4th.Size = new System.Drawing.Size(40, 17);
+            this.CVradioBtn4th.Size = new System.Drawing.Size(45, 20);
             this.CVradioBtn4th.TabIndex = 4;
             this.CVradioBtn4th.Text = "4th";
             this.CVradioBtn4th.UseVisualStyleBackColor = true;
@@ -939,9 +1027,10 @@
             // CVradioBtn3rd
             // 
             this.CVradioBtn3rd.AutoSize = true;
-            this.CVradioBtn3rd.Location = new System.Drawing.Point(122, 45);
+            this.CVradioBtn3rd.Location = new System.Drawing.Point(163, 55);
+            this.CVradioBtn3rd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVradioBtn3rd.Name = "CVradioBtn3rd";
-            this.CVradioBtn3rd.Size = new System.Drawing.Size(40, 17);
+            this.CVradioBtn3rd.Size = new System.Drawing.Size(47, 20);
             this.CVradioBtn3rd.TabIndex = 3;
             this.CVradioBtn3rd.Text = "3rd";
             this.CVradioBtn3rd.UseVisualStyleBackColor = true;
@@ -949,9 +1038,10 @@
             // CVradioBtn2nd
             // 
             this.CVradioBtn2nd.AutoSize = true;
-            this.CVradioBtn2nd.Location = new System.Drawing.Point(64, 45);
+            this.CVradioBtn2nd.Location = new System.Drawing.Point(85, 55);
+            this.CVradioBtn2nd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVradioBtn2nd.Name = "CVradioBtn2nd";
-            this.CVradioBtn2nd.Size = new System.Drawing.Size(43, 17);
+            this.CVradioBtn2nd.Size = new System.Drawing.Size(50, 20);
             this.CVradioBtn2nd.TabIndex = 2;
             this.CVradioBtn2nd.Text = "2nd";
             this.CVradioBtn2nd.UseVisualStyleBackColor = true;
@@ -959,9 +1049,10 @@
             // CVradioBtn1st
             // 
             this.CVradioBtn1st.AutoSize = true;
-            this.CVradioBtn1st.Location = new System.Drawing.Point(10, 45);
+            this.CVradioBtn1st.Location = new System.Drawing.Point(13, 55);
+            this.CVradioBtn1st.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVradioBtn1st.Name = "CVradioBtn1st";
-            this.CVradioBtn1st.Size = new System.Drawing.Size(39, 17);
+            this.CVradioBtn1st.Size = new System.Drawing.Size(45, 20);
             this.CVradioBtn1st.TabIndex = 1;
             this.CVradioBtn1st.Text = "1st";
             this.CVradioBtn1st.UseVisualStyleBackColor = true;
@@ -970,9 +1061,10 @@
             // 
             this.CVradioBtnShowAllSweeps.AutoSize = true;
             this.CVradioBtnShowAllSweeps.Checked = true;
-            this.CVradioBtnShowAllSweeps.Location = new System.Drawing.Point(10, 19);
+            this.CVradioBtnShowAllSweeps.Location = new System.Drawing.Point(13, 23);
+            this.CVradioBtnShowAllSweeps.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVradioBtnShowAllSweeps.Name = "CVradioBtnShowAllSweeps";
-            this.CVradioBtnShowAllSweeps.Size = new System.Drawing.Size(104, 17);
+            this.CVradioBtnShowAllSweeps.Size = new System.Drawing.Size(128, 20);
             this.CVradioBtnShowAllSweeps.TabIndex = 0;
             this.CVradioBtnShowAllSweeps.TabStop = true;
             this.CVradioBtnShowAllSweeps.Text = "Show all sweeps";
@@ -981,9 +1073,10 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(27, 16);
+            this.label21.Location = new System.Drawing.Point(36, 20);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(91, 13);
+            this.label21.Size = new System.Drawing.Size(112, 16);
             this.label21.TabIndex = 8;
             this.label21.Text = "Detection method";
             // 
@@ -993,9 +1086,10 @@
             this.comboBoxMethod.Items.AddRange(new object[] {
             "CV",
             "EIS"});
-            this.comboBoxMethod.Location = new System.Drawing.Point(121, 13);
+            this.comboBoxMethod.Location = new System.Drawing.Point(161, 16);
+            this.comboBoxMethod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxMethod.Name = "comboBoxMethod";
-            this.comboBoxMethod.Size = new System.Drawing.Size(77, 21);
+            this.comboBoxMethod.Size = new System.Drawing.Size(101, 24);
             this.comboBoxMethod.TabIndex = 1;
             this.comboBoxMethod.SelectedIndexChanged += new System.EventHandler(this.comboBoxMethod_SelectedIndexChanged);
             // 
@@ -1009,17 +1103,19 @@
             this.groupBoxCVParam.Controls.Add(this.label23);
             this.groupBoxCVParam.Controls.Add(this.label24);
             this.groupBoxCVParam.Controls.Add(this.label25);
-            this.groupBoxCVParam.Location = new System.Drawing.Point(22, 39);
-            this.groupBoxCVParam.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.groupBoxCVParam.Location = new System.Drawing.Point(29, 48);
+            this.groupBoxCVParam.Margin = new System.Windows.Forms.Padding(4, 4, 4, 7);
             this.groupBoxCVParam.Name = "groupBoxCVParam";
-            this.groupBoxCVParam.Size = new System.Drawing.Size(177, 130);
+            this.groupBoxCVParam.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxCVParam.Size = new System.Drawing.Size(236, 160);
             this.groupBoxCVParam.TabIndex = 9;
             this.groupBoxCVParam.TabStop = false;
             this.groupBoxCVParam.Text = "Parameter config";
             // 
             // CVnumericStartVolt
             // 
-            this.CVnumericStartVolt.Location = new System.Drawing.Point(100, 20);
+            this.CVnumericStartVolt.Location = new System.Drawing.Point(133, 25);
+            this.CVnumericStartVolt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVnumericStartVolt.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -1031,7 +1127,7 @@
             0,
             -2147483648});
             this.CVnumericStartVolt.Name = "CVnumericStartVolt";
-            this.CVnumericStartVolt.Size = new System.Drawing.Size(70, 20);
+            this.CVnumericStartVolt.Size = new System.Drawing.Size(93, 22);
             this.CVnumericStartVolt.TabIndex = 9;
             this.CVnumericStartVolt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.CVnumericStartVolt.Value = new decimal(new int[] {
@@ -1042,7 +1138,8 @@
             // 
             // CVnumericEndVolt
             // 
-            this.CVnumericEndVolt.Location = new System.Drawing.Point(100, 46);
+            this.CVnumericEndVolt.Location = new System.Drawing.Point(133, 57);
+            this.CVnumericEndVolt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVnumericEndVolt.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -1054,7 +1151,7 @@
             0,
             -2147483648});
             this.CVnumericEndVolt.Name = "CVnumericEndVolt";
-            this.CVnumericEndVolt.Size = new System.Drawing.Size(70, 20);
+            this.CVnumericEndVolt.Size = new System.Drawing.Size(93, 22);
             this.CVnumericEndVolt.TabIndex = 8;
             this.CVnumericEndVolt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.CVnumericEndVolt.Value = new decimal(new int[] {
@@ -1065,7 +1162,8 @@
             // 
             // CVnumericStep
             // 
-            this.CVnumericStep.Location = new System.Drawing.Point(100, 72);
+            this.CVnumericStep.Location = new System.Drawing.Point(133, 89);
+            this.CVnumericStep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVnumericStep.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1077,7 +1175,7 @@
             0,
             0});
             this.CVnumericStep.Name = "CVnumericStep";
-            this.CVnumericStep.Size = new System.Drawing.Size(70, 20);
+            this.CVnumericStep.Size = new System.Drawing.Size(93, 22);
             this.CVnumericStep.TabIndex = 7;
             this.CVnumericStep.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.CVnumericStep.Value = new decimal(new int[] {
@@ -1088,7 +1186,8 @@
             // 
             // CVnumericRepeatTimes
             // 
-            this.CVnumericRepeatTimes.Location = new System.Drawing.Point(100, 98);
+            this.CVnumericRepeatTimes.Location = new System.Drawing.Point(133, 121);
+            this.CVnumericRepeatTimes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CVnumericRepeatTimes.Maximum = new decimal(new int[] {
             6,
             0,
@@ -1100,7 +1199,7 @@
             0,
             0});
             this.CVnumericRepeatTimes.Name = "CVnumericRepeatTimes";
-            this.CVnumericRepeatTimes.Size = new System.Drawing.Size(70, 20);
+            this.CVnumericRepeatTimes.Size = new System.Drawing.Size(93, 22);
             this.CVnumericRepeatTimes.TabIndex = 4;
             this.CVnumericRepeatTimes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.CVnumericRepeatTimes.Value = new decimal(new int[] {
@@ -1112,43 +1211,47 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 100);
+            this.label22.Location = new System.Drawing.Point(8, 123);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(73, 13);
+            this.label22.Size = new System.Drawing.Size(93, 16);
             this.label22.TabIndex = 6;
             this.label22.Text = "Repeat Times";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 72);
+            this.label23.Location = new System.Drawing.Point(8, 89);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(53, 13);
+            this.label23.Size = new System.Drawing.Size(66, 16);
             this.label23.TabIndex = 4;
             this.label23.Text = "Step (mV)";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(6, 48);
+            this.label24.Location = new System.Drawing.Point(8, 59);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(89, 13);
+            this.label24.Size = new System.Drawing.Size(112, 16);
             this.label24.TabIndex = 2;
             this.label24.Text = "End Voltage (mV)";
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(6, 22);
+            this.label25.Location = new System.Drawing.Point(8, 27);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(92, 13);
+            this.label25.Size = new System.Drawing.Size(115, 16);
             this.label25.TabIndex = 0;
             this.label25.Text = "Start Voltage (mV)";
             // 
             // CVzedGraphControl
             // 
-            this.CVzedGraphControl.Location = new System.Drawing.Point(305, 297);
-            this.CVzedGraphControl.Margin = new System.Windows.Forms.Padding(4);
+            this.CVzedGraphControl.Location = new System.Drawing.Point(407, 366);
+            this.CVzedGraphControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.CVzedGraphControl.Name = "CVzedGraphControl";
             this.CVzedGraphControl.ScrollGrace = 0D;
             this.CVzedGraphControl.ScrollMaxX = 0D;
@@ -1157,7 +1260,7 @@
             this.CVzedGraphControl.ScrollMinX = 0D;
             this.CVzedGraphControl.ScrollMinY = 0D;
             this.CVzedGraphControl.ScrollMinY2 = 0D;
-            this.CVzedGraphControl.Size = new System.Drawing.Size(451, 333);
+            this.CVzedGraphControl.Size = new System.Drawing.Size(601, 410);
             this.CVzedGraphControl.TabIndex = 29;
             this.CVzedGraphControl.UseExtendedPrintDialog = true;
             // 
@@ -1165,10 +1268,11 @@
             // 
             this.tabEIS.BackColor = System.Drawing.Color.Lavender;
             this.tabEIS.Controls.Add(this.label3);
-            this.tabEIS.Location = new System.Drawing.Point(4, 22);
+            this.tabEIS.Location = new System.Drawing.Point(4, 25);
+            this.tabEIS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabEIS.Name = "tabEIS";
-            this.tabEIS.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEIS.Size = new System.Drawing.Size(1071, 640);
+            this.tabEIS.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabEIS.Size = new System.Drawing.Size(1431, 791);
             this.tabEIS.TabIndex = 1;
             this.tabEIS.Text = "dump2";
             // 
@@ -1176,9 +1280,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 553);
+            this.label3.Location = new System.Drawing.Point(23, 681);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(138, 13);
+            this.label3.Size = new System.Drawing.Size(174, 17);
             this.label3.TabIndex = 13;
             this.label3.Text = "Design by MEMs - UET";
             // 
@@ -1186,10 +1291,11 @@
             // 
             this.tabCV.BackColor = System.Drawing.Color.LightCyan;
             this.tabCV.Controls.Add(this.label8);
-            this.tabCV.Location = new System.Drawing.Point(4, 22);
+            this.tabCV.Location = new System.Drawing.Point(4, 25);
+            this.tabCV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabCV.Name = "tabCV";
-            this.tabCV.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCV.Size = new System.Drawing.Size(1071, 640);
+            this.tabCV.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabCV.Size = new System.Drawing.Size(1431, 791);
             this.tabCV.TabIndex = 0;
             this.tabCV.Text = "dump1";
             // 
@@ -1197,9 +1303,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(17, 553);
+            this.label8.Location = new System.Drawing.Point(23, 681);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(138, 13);
+            this.label8.Size = new System.Drawing.Size(174, 17);
             this.label8.TabIndex = 6;
             this.label8.Text = "Design by MEMs - UET";
             // 
@@ -1209,52 +1316,22 @@
             this.tabControl1.Controls.Add(this.tabCV);
             this.tabControl1.Controls.Add(this.tabEIS);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1079, 666);
+            this.tabControl1.Size = new System.Drawing.Size(1439, 820);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
             // 
-            // statusCtrlVoltage
-            // 
-            this.statusCtrlVoltage.Location = new System.Drawing.Point(123, 75);
-            this.statusCtrlVoltage.Name = "statusCtrlVoltage";
-            this.statusCtrlVoltage.Size = new System.Drawing.Size(73, 20);
-            this.statusCtrlVoltage.TabIndex = 5;
-            this.statusCtrlVoltage.Click += new System.EventHandler(this.statusCtrlVoltage_Click);
-            // 
-            // labelVoltage1
-            // 
-            this.labelVoltage1.AutoSize = true;
-            this.labelVoltage1.BackColor = System.Drawing.Color.Transparent;
-            this.labelVoltage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVoltage1.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelVoltage1.Location = new System.Drawing.Point(14, 73);
-            this.labelVoltage1.Name = "labelVoltage1";
-            this.labelVoltage1.Size = new System.Drawing.Size(33, 16);
-            this.labelVoltage1.TabIndex = 34;
-            this.labelVoltage1.Text = "N/A";
-            // 
-            // labelVoltage2
-            // 
-            this.labelVoltage2.AutoSize = true;
-            this.labelVoltage2.BackColor = System.Drawing.Color.Transparent;
-            this.labelVoltage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVoltage2.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelVoltage2.Location = new System.Drawing.Point(403, 74);
-            this.labelVoltage2.Name = "labelVoltage2";
-            this.labelVoltage2.Size = new System.Drawing.Size(33, 16);
-            this.labelVoltage2.TabIndex = 35;
-            this.labelVoltage2.Text = "N/A";
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1045, 667);
+            this.ClientSize = new System.Drawing.Size(1393, 821);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Electrochemical Potentiostat";
