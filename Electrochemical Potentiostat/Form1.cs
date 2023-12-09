@@ -331,10 +331,10 @@ namespace Electrochemical_Potentiostat
             else
             {
                 CV_ClearGraph();
-                CVlistView.Items.Clear();
+
 
                 EIS_ClearGraph();
-                EISlistView.Items.Clear();
+
 
                 ClearData();
             }
@@ -378,7 +378,6 @@ namespace Electrochemical_Potentiostat
                 numSample = numStep * RepeatTimes;
 
                 CV_ClearGraph();
-                CVlistView.Items.Clear();
 
                 CVbtnMeasure.Enabled = false;
                 CVbtnClearAll.Enabled = false;
@@ -422,7 +421,7 @@ namespace Electrochemical_Potentiostat
                 receiverCount = 0;
                 status = 0;
                 EIS_ClearGraph();
-                EISlistView.Items.Clear();
+
 
                 if (EIScheckBoxSweepEn.Checked == true)
                 {
@@ -519,7 +518,7 @@ namespace Electrochemical_Potentiostat
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     CV_ClearGraph();
-                    CVlistView.Items.Clear();
+
 
                     bufferC = new double[25000];
                     bufferV = new double[25000];
@@ -613,7 +612,7 @@ namespace Electrochemical_Potentiostat
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     EIS_ClearGraph();
-                    EISlistView.Items.Clear();
+
 
                     buffFreq = new double[25000];
                     buffMag = new double[25000];
@@ -905,13 +904,15 @@ namespace Electrochemical_Potentiostat
                 this.groupBoxShowSweepTimes.Visible = false;
                 this.groupBoxEISMeasure.Visible = false;
                 this.EISzedGraphControl.Visible = false;
-                this.groupBoxEISResult.Visible = false;
+
 
                 this.groupBoxCVParam.Visible = true;
                 this.groupBoxCVSweep.Visible = true;
                 this.groupBoxCVMeasure.Visible = true;
+                Console.WriteLine(this.groupBoxCVMeasure.Visible);
                 this.CVzedGraphControl.Visible = true;
-                this.groupBoxCVResult.Visible = true;
+                Console.WriteLine(this.groupBoxCVMeasure.Visible);
+
 
             }
             else if (selectedIndex == 1)
@@ -920,13 +921,13 @@ namespace Electrochemical_Potentiostat
                 this.groupBoxCVSweep.Visible = false;
                 this.groupBoxCVMeasure.Visible = false;
                 this.CVzedGraphControl.Visible = false;
-                this.groupBoxCVResult.Visible = false;
+
 
                 this.groupBoxEISParam.Visible = true;
                 this.groupBoxShowSweepTimes.Visible = true;
                 this.groupBoxEISMeasure.Visible = true;
                 this.EISzedGraphControl.Visible = true;
-                this.groupBoxEISResult.Visible = true;
+
 
             }
 
@@ -1008,6 +1009,26 @@ namespace Electrochemical_Potentiostat
 
         }
 
+        private void EISzedGraphControl_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EISnumericStartFreq_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxCVMeasure_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void statusCtrlVoltage_Click(object sender, EventArgs e)
         {
 
@@ -1054,10 +1075,7 @@ namespace Electrochemical_Potentiostat
                 groupBoxShowSweepTimes.Enabled = true;
 
                 eisPane.XAxis.Title.Text = "Frequency (Hz)";
-                EISlistView.Clear();
-                EISlistView.Columns.Add("Frequency (Hz)");
-                EISlistView.Columns.Add("Magtitude (Ω)");
-                EISlistView.Columns.Add("Phase (°)");
+
 
             }
             else
@@ -1071,10 +1089,7 @@ namespace Electrochemical_Potentiostat
                 groupBoxShowSweepTimes.Enabled = false;
 
                 eisPane.XAxis.Title.Text = "Time (ms)";
-                EISlistView.Clear();
-                EISlistView.Columns.Add("Time (ms)");
-                EISlistView.Columns.Add("Magtitude (Ω)");
-                EISlistView.Columns.Add("Phase (°)");
+
             }
 
             EISzedGraphControl.AxisChange();
@@ -1167,9 +1182,7 @@ namespace Electrochemical_Potentiostat
             {
                 ListViewItem item = new ListViewItem(bufferV[i].ToString());
                 item.SubItems.Add(bufferC[i].ToString());
-                CVlistView.Items.Add(item);
 
-                CVlistView.Items[CVlistView.Items.Count - 1].EnsureVisible();
             }
         }
 
@@ -1183,9 +1196,7 @@ namespace Electrochemical_Potentiostat
 
                 item.SubItems.Add(buffMag[receiverCount - 1].ToString());
                 item.SubItems.Add(buffPhase[receiverCount - 1].ToString());
-                EISlistView.Items.Add(item);
 
-                EISlistView.Items[EISlistView.Items.Count - 1].EnsureVisible();
             }
         }
 
@@ -1713,7 +1724,7 @@ namespace Electrochemical_Potentiostat
             CVnumericStep.Value = 10;
             CVnumericRepeatTimes.Value = 2;
             CV_ClearGraph();
-            CVlistView.Items.Clear();
+
 
             EIScheckBoxLog.Checked = false;
             EIScheckBoxSweepEn.Checked = false;
@@ -1722,7 +1733,7 @@ namespace Electrochemical_Potentiostat
             EISnumericSweepPoints.Value = 100;
             EISnumericRepeatTimes.Value = 2;
             EIS_ClearGraph();
-            EISlistView.Items.Clear();
+
         }
     }
 }
