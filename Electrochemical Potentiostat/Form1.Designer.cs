@@ -1135,7 +1135,7 @@
             this.tabEIS.Location = new System.Drawing.Point(4, 22);
             this.tabEIS.Name = "tabEIS";
             this.tabEIS.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEIS.Size = new System.Drawing.Size(696, 531);
+            this.tabEIS.Size = new System.Drawing.Size(696, 515);
             this.tabEIS.TabIndex = 1;
             this.tabEIS.Text = "dump2";
             // 
@@ -1156,7 +1156,7 @@
             this.tabCV.Location = new System.Drawing.Point(4, 22);
             this.tabCV.Name = "tabCV";
             this.tabCV.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCV.Size = new System.Drawing.Size(696, 531);
+            this.tabCV.Size = new System.Drawing.Size(696, 515);
             this.tabCV.TabIndex = 0;
             this.tabCV.Text = "dump1";
             // 
@@ -1175,10 +1175,10 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabCVEIS);
             this.tabControl1.Controls.Add(this.tabCV);
             this.tabControl1.Controls.Add(this.tabEIS);
-            this.tabControl1.Controls.Add(this.tabCVEIS);
-            this.tabControl1.Location = new System.Drawing.Point(0, -23);
+            this.tabControl1.Location = new System.Drawing.Point(0, -28);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(704, 541);
